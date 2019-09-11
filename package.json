@@ -1,5 +1,5 @@
 {
-  "name": "scrabblesearch",
+  "name": "scrabblesort",
   "version": "1.0.0",
   "description": "Guess highest point word from a list of 8 letters",
   "main": "index.js",
