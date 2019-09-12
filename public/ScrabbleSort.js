@@ -89,7 +89,6 @@ function pickLetters(){
 }
   function submitAnswer(){
     let answer = document.getElementById("answer").value;
-    console.log(answer);
   }
   function resetGame(){
     pickLetters();
