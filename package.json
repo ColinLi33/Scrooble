@@ -9,6 +9,7 @@
   "author": "Colin Li",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "requirejs": "^2.3.6"
   }
 }
