@@ -8,8 +8,87 @@ function pickLetters(){
     letterString = letterString + pickedLetter;
   }
   //if(checkWords(letterString)){
-  for(let i = 0; i < 8; i++){
+  for(let i = 0; i < 8; i++) {
     document.getElementById("letterDisplay" + i).innerHTML = letters[i];
+    switch(letters[i]) {
+      case "A":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "B":
+      document.getElementById("tileScore" + i).innerHTML = "3";
+      break;
+      case "C":
+      document.getElementById("tileScore" + i).innerHTML = "3";
+      break;
+      case "D":
+      document.getElementById("tileScore" + i).innerHTML = "2";
+      break;
+      case "E":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "F":
+      document.getElementById("tileScore" + i).innerHTML = "4";
+      break;
+      case "G":
+      document.getElementById("tileScore" + i).innerHTML = "2";
+      break;
+      case "H":
+      document.getElementById("tileScore" + i).innerHTML = "4";
+      break;
+      case "I":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "J":
+      document.getElementById("tileScore" + i).innerHTML = "8";
+      break;
+      case "K":
+      document.getElementById("tileScore" + i).innerHTML = "5";
+      break;
+      case "L":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "M":
+      document.getElementById("tileScore" + i).innerHTML = "3";
+      break;
+      case "N":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "O":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "P":
+      document.getElementById("tileScore" + i).innerHTML = "3";
+      break;
+      case "Q":
+      document.getElementById("tileScore" + i).innerHTML = "10";
+      break;
+      case "R":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "S":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "T":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "U":
+      document.getElementById("tileScore" + i).innerHTML = "1";
+      break;
+      case "V":
+      document.getElementById("tileScore" + i).innerHTML = "4";
+      break;
+      case "W":
+      document.getElementById("tileScore" + i).innerHTML = "4";
+      break;
+      case "X":
+      document.getElementById("tileScore" + i).innerHTML = "8";
+      break;
+      case "Y":
+      document.getElementById("tileScore" + i).innerHTML = "4";
+      break;
+      case "Z":
+      document.getElementById("tileScore" + i).innerHTML = "10";
+}
   }
 //  } else {
   //    pickLetters();
