@@ -2,17 +2,16 @@
   height: 250px;
   top: 5px;
   background-color: #FFB357;
-  max-width:1200px;
+  max-width:1200vw;
   padding-left: 50px;
   position: relative;
    margin: auto;
-  width: 1000px;
-  height: 300px;
-  margin: 20px;
+   margin-left: 10px;
+   margin-right: 10px;
+   margin-top: 10px;
     vertical-align: middle;
   background-color: #FF7D00;
   position: relative;
-  top: 10px;
 }
 
 .headerTitle {
@@ -37,32 +36,54 @@
 }
 
 .game {
+    text-align: center;
   position: relative;
-  margin: auto;
+  margin: 0 auto;
   top: 15px;
   padding-left: 50px;
+  padding-right: 50px;
 }
 
-.scrabbleTile {
+.tiles {
+  display: inline-block;
+  text-align: center;
+}
+
+.singleTile {
+
   background-color: #FFE0AE;
-  font-size: 30px;
   width: 50px;
   height: 50px;
   border: 3px solid black;
   padding: 10px;
   margin: 5px;
-  float: left;
-  bottom: 40px;
-  text-align: center;
-  vertical-align: middle;
   line-height: 50px;
-  font-family: Courier;
   float: left;
+
 }
 
+.tileLetter {
+
+  font-size: 30px;
+  font-family: Courier;
+
+}
+
+.tileScore {
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  line-height: 20px;
+  float: left;
+  font-size: 18;
+  font-family: Courier;
+  position: relative;
+  bottom: 17px;
+  left: 33px;
+
+}
 .userInput {
   position: relative;
-  left: 20px;
 }
 
 .submit {
