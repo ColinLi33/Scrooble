@@ -1,6 +1,8 @@
+var scroobleBag = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ".split("");
+
 pickLetters();
 function pickLetters(){
-  var scroobleBag = ["A", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "C", "C", "D", "D", "D", "D", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "F", "F", "G", "G", "G", "H", "H", "I", "I", "I", "I", "I", "I", "I", "I", "I", "J", "K", "L", "L", "L", "L", "M", "M", "N", "N", "N", "N", "N", "N", "O", "O", "O", "O", "O", "O", "O", "O", "P", "P", "Q", "R", "R", "R", "R", "R", "R", "S", "S", "S", "S", "T", "T", "T", "T", "T", "T", "U", "U", "U", "U", "V", "V", "W", "W", "X", "Y", "Z"]
+
   var letterString = "";
   let letters = [];
   for(let i = 0; i < 8; i++){
@@ -11,7 +13,15 @@ function pickLetters(){
   //if(checkWords(letterString)){
   for(let i = 0; i < 8; i++) {
     document.getElementById("letterDisplay" + i).innerHTML = letters[i];
-    switch(letters[i]) {
+    setTileScore(letters[i], i);
+  }
+//  } else {
+  //    pickLetters();
+  //}
+}
+
+  function setTileScore(letter, i) {
+    switch(letter) {
       case "A":
       document.getElementById("tileScore" + i).innerHTML = 1;
       break;
@@ -91,10 +101,6 @@ function pickLetters(){
       document.getElementById("tileScore" + i).innerHTML = 10;
 }
   }
-//  } else {
-  //    pickLetters();
-  //}
-}
 
   function submitAnswer(){
     let answer = document.getElementById("answer").value;
