@@ -1,4 +1,11 @@
 .headerBox {
+  height: 250px;
+  top: 5px;
+  background-color: #FFB357;
+  max-width:1200px;
+  padding-left: 50px;
+  position: relative;
+   margin: auto;
   width: 1000px;
   height: 300px;
   margin: 20px;
@@ -12,6 +19,9 @@
   text-align: center; top;
   color: white;
   font-size: 100px;
+  position: relative;
+    font-family: Courier;
+      margin: auto;
   position: float;
     font-family: Courier;
 }
@@ -23,6 +33,14 @@
   position: relative;
   top: 10px;
     font-family: Courier;
+      margin: auto;
+}
+
+.game {
+  position: relative;
+  margin: auto;
+  top: 15px;
+  padding-left: 50px;
 }
 
 .scrabbleTile {
@@ -39,4 +57,19 @@
   vertical-align: middle;
   line-height: 50px;
   font-family: Courier;
+  float: left;
+}
+
+.userInput {
+  position: relative;
+  left: 20px;
+}
+
+.submit {
+display: block;
+}
+
+.buttons {
+  display: block;
+  margin: 5px;
 }

@@ -7,11 +7,13 @@ function pickLetters(){
     letters.push(pickedLetter);
     letterString = letterString + pickedLetter;
   }
-  if(checkWords(letterString)){
+  //if(checkWords(letterString)){
+  for(let i = 0; i < 8; i++){
     document.getElementById("letterDisplay" + i).innerHTML = letters[i];
-  } else {
-      pickLetters();
   }
+//  } else {
+  //    pickLetters();
+  //}
 }
 
   function submitAnswer(){

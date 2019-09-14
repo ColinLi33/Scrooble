@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html>
-
   <link href="style.css" rel="stylesheet" type="text/css">
-  <container class="header">
+  <div class="header">
     <div class="headerBox">
-    <div class="headerTitle">
-  <p>Scrooble</p>
+      <div class="headerTitle">
+    <b>Scrooble</b>
+  </div>
+  <div class="headerDesc">
+    <p>Made by Colin Li assisted by Matthew Tzeng</p>
+  </div>
+    </div>
 </div>
-<div class="headerDesc">
-  <p>Made by Colin Li assisted by Colin Li</p>
-</div>
-
-</container>
-
+<div class="game">
   <div class="scrabbleTile" id = "letterDisplay0"></div>
   <div class="scrabbleTile" id = "letterDisplay1"></div>
   <div class="scrabbleTile" id = "letterDisplay2"></div>
@@ -21,16 +20,15 @@
   <div class="scrabbleTile" id = "letterDisplay5"></div>
   <div class="scrabbleTile" id = "letterDisplay6"></div>
   <div class="scrabbleTile" id = "letterDisplay7"></div>
-
-  <input type="text" id="answer" value=""/>
-
-  <br/>
-
+<div class="userInput">
+<div class="textFill">
+  <input type="text" id="answer"  value=""/>
+</div>
+<div class="buttons">
   <button onclick="submitAnswer()" id="submitButton" >Submit</button>
   <button onclick="resetGame()" id="resetButton" >Reset</button>
-
+</div>
+</div>
   <script src="scrabbleSort.js"></script>
-
-
-
+</div>
 </html>
