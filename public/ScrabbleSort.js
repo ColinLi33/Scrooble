@@ -18,6 +18,7 @@ function pickLetters(){
 
   function submitAnswer(){
     let answer = document.getElementById("answer").value;
+    location.replace("http://localhost:3333/dictionary")
   }
   function resetGame(){
     pickLetters();
@@ -39,7 +40,8 @@ function pickLetters(){
       return false;
   }
     //this puts all the words in the dictionary into an array named list
-  function getDictionary(filePath){
+  //function getDictionary(filePath){
+    /*
         var result = null;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", filePath, false);
@@ -47,8 +49,25 @@ function pickLetters(){
         if (xmlhttp.status==200) {
           result = xmlhttp.responseText.split("\n");
         }
-        return result;
-    }
+        return result; */
+        var httpClient = function(){
+          this.get = function(url, callback){
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = function(){
+              if(httpRequest.readyState == 4 && httpRequest.status == 200)
+                callback(httpRequest.responseText);
+              }
+              httpRequest.open("GET", url, true);
+              httpRequest.send(null);
+          }
+        }
+        var theUrl = 'http://localhost:3333/dictionary';
+        var client = new HttpClient();
+          client.get(theUrl, function(response){
+            var response1 = JSON.parse(response);
+            alert(response1);
+          })
+    //}
 
     //this puts every combination of characters into an array
     function getCombinations(str){
