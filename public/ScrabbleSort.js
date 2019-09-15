@@ -138,16 +138,17 @@ function pickLetters(){
         xmlhttp.open("GET", filePath, false);
         xmlhttp.send();
         if (xmlhttp.status==200) {
-          result = xmlhttp.responseText.split("\n");
+          //On windows, the formating is weird. so an enter is \r\n not just \n OOF WINDOWS IS BAD LOL
+          result = xmlhttp.responseText.split("\r\n");
+          
         }
         //for(i = 0; i < 1; i++) {
-          newresult = result[0].toString();
+          console.log(result);
+          console.log(result[0]);
         //}
-        var test = "a"
-        console.log(result[2]);
-        console.log(newresult === "a");
-        console.log(test === "a");
-        console.log(result);
+        console.log(result[0] === "a");
+        var set = new Set(result);
+        console.log(set.has("a"));
         return set;
       }
         /*
