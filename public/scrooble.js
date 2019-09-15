@@ -7,7 +7,7 @@ var score = 0;
 pickLetters();
 
 function pickLetters() {
-
+  console.log('hi');
 	var letterString = "";
 	let letters = [];
 	for (let i = 0; i < 8; i++) {
@@ -248,7 +248,6 @@ function getDictionary(filePath) {
 		result = xmlhttp.responseText.split("\r\n");
 	}
 	dictSet = new Set(result);
-  console.log(dictSet);
 }
 /*
         var httpClient = function(){
