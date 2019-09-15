@@ -4,19 +4,17 @@ var readLine = require('readline');
 const http = require('http');
 
 const app = express();
-const port = process.env.port || 3333;
 
 app.use(express.static('public'))
 
-
-
-app.get('/', (req, res) => {
-  res.render('index.html');
-  res.render('scrabbleSort.js');
+let server = app.listen(process.env.PORT || 3333, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-
+app.get('/', function (req, res) {
+  res.render(__dirname + './public/index.html');
+  res.render(__dirname + './public/scrabblesort.js');
+})
 //dictionary map stuff
 /*
 var dictSet = new Set();
