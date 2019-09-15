@@ -131,6 +131,7 @@ function pickLetters(){
     //this puts all the words in the dictionary into an array named list
       function getDictionary(filePath){
         var result = [];
+        var newresult = "";
         var set = new Set();
         var xmlhttp = new XMLHttpRequest();
 
@@ -139,13 +140,14 @@ function pickLetters(){
         if (xmlhttp.status==200) {
           result = xmlhttp.responseText.split("\n");
         }
-        result = result.toString();
-        result = result.split(",");
-        for(let i = 0; i < result.length; i++){
-          set.add(String(result[i]));
-        }
+        //for(i = 0; i < 1; i++) {
+          newresult = result[0].toString();
+        //}
+        var test = "a"
+        console.log(result[2]);
+        console.log(newresult === "a");
+        console.log(test === "a");
         console.log(result);
-        console.log(set.has('bad'));
         return set;
       }
         /*
