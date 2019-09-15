@@ -2,9 +2,8 @@ const express = require('express');
 var fs = require('fs');
 var readLine = require('readline');
 const http = require('http');
-
+var wordCountGlobal;
 const app = express();
-
 app.use(express.static('public'))
 
 let server = app.listen(process.env.PORT || 3333, function(){
@@ -37,3 +36,18 @@ router.get('/dictionary', function(req, res){
 
 module.exports = dictMap;
 */
+function updateWordCount(words){
+  fs.writeFile("wordCount.txt", words, (err) => {
+    if (err) console.log(err);
+    console.log("Successfully Written to File.");
+  });
+}
+
+fs.readFile('wordCount.txt', "utf-8", function(err, words){
+  if(err) { console.log(err) }
+  wordCountGlobal = words;
+  console.log(wordCountGlobal);
+})
+app.get('/globalwordcount', function(req, res){
+  res.send(JSON.stringify(wordCountGlobal));
+});

@@ -6,8 +6,20 @@ var alreadyAnswered = false;
 var score = 0;
 var letterString = "";
 var answerCombos = [];
-pickLetters();
+var globalWordCount;
 
+//global word count http request
+const Http = new XMLHttpRequest();
+const url='http://scrooble.net/globalwordcount';
+Http.open("GET", url);
+Http.send();
+
+Http.onreadystatechange = (e) => {
+  globalWordCount == Http.responseText;
+}
+
+pickLetters();
+//main function that does the stuff
 function pickLetters() {
 	let letters = [];
 	for (let i = 0; i < 8; i++) {
@@ -126,7 +138,7 @@ function submitAnswer() {
 			answerSet = new Set(answerCombos);
 			if (answerSet.has(answeredString)) {
 				answer.push(answeredString);
-
+        globalWordCount++;
 				for (let j = 0; j < answeredString.length; j++) {
 					switch (answeredString.charAt(j).toUpperCase()) {
 						case "A":
@@ -256,46 +268,8 @@ function getDictionary(filePath) {
 	}
 	dictSet = new Set(result);
 }
-/*
-        var httpClient = function(){
-          this.get = function(url, callback){
-            var httpRequest = new XMLHttpRequest();
-            httpRequest.onreadystatechange = function(){
-              if(httpRequest.readyState == 4 && httpRequest.status == 200)
-                callback(httpRequest.responseText);
-              }
-              httpRequest.open("GET", url, true);
-              httpRequest.send(null);
-          }
-        }
-      }
-        /*
-        var theUrl = 'http://localhost:3333/dictionary';
-        var client = new HttpClient();
-          client.get(theUrl, function(response){
-            var response1 = JSON.parse(response);
-            alert(response1);
-          }) */
-//}
 
 //this puts every combination of characters into an array
-/*
-function getCombinations(str){
-  var fn = function(active, rest, a) {
-    if (!active && !rest)
-      return;
-    if (!rest) {
-      a.push(active);
-    } else {
-        fn(active + rest[0], rest.slice(1), a);
-        fn(active, rest.slice(1), a);
-      }
-        return a;
-      }
-        return fn("", str, []);
-  } */
-
-
 
 function getCombinations(str) {
 	var tree = function(leafs) {
