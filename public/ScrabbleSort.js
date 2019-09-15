@@ -1,7 +1,6 @@
 var scroobleBag = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ".split("");
 import { dictMap } from './index.js'
 pickLetters();
-import { dictMap } from '../index.js'
 function pickLetters(){
 
   var letterString = "";
