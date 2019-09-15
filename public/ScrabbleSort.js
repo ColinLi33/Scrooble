@@ -222,7 +222,7 @@ function checkWords(words) {
 	getCombinations(words); // create array of letter combinations
 	let amountOfWords = 0;
 	for (let i = 0; i < combinationArray.length; i++) {
-		if (dictSet.has(combinationArray[i].toLowerCase())) {
+		if (dictSet.has(combinationArray[i].toUpperCase())) {
 			amountOfWords++;
 		}
 	}
