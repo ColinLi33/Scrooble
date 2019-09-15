@@ -22,6 +22,7 @@ const readInterface = readLine.createInterface({
   input: fs.createReadStream('dictionary.txt'),
 //  output: process.stdout,
   console: false
+  export { dictMap };
 });
 var key = 1;
 readInterface.on('line', function(line){
