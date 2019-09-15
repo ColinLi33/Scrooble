@@ -244,8 +244,9 @@ function getDictionary(filePath) {
 	xmlhttp.open("GET", filePath, false);
 	xmlhttp.send();
 	if (xmlhttp.status == 200) {
-		result = xmlhttp.responseText.split("\n");
-    console.log(result.length);
+    result = xmlhttp.responseText.split("\r\n");
+    if(result.length != 276644)
+		    result = xmlhttp.responseText.split("\n");
 	}
 	dictSet = new Set(result);
 }
