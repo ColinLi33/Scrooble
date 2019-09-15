@@ -13,7 +13,7 @@ let server = app.listen(process.env.PORT || 3333, function(){
 
 app.get('/', function (req, res) {
   res.render(__dirname + './public/index.html');
-  res.render(__dirname + './public/scrabblesort.js');
+  res.render(__dirname + './public/ScrabbleSort.js');
   res.render(__dirname + './public/dictionary.txt');
 })
 //dictionary map stuff
