@@ -1,4 +1,5 @@
 pickLetters();
+import { dictMap } from '../index.js'
 function pickLetters(){
   var letterString = "";
   let letters = [];
