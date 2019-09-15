@@ -1,5 +1,5 @@
 var scroobleBag = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ".split("");
-
+import { dictMap } from './index.js'
 pickLetters();
 function pickLetters(){
 
@@ -128,8 +128,8 @@ function pickLetters(){
 
 
     //this puts all the words in the dictionary into an array named list
-  //function getDictionary(filePath){
-    /*
+      /*function getDictionary(filePath){
+
         var result = null;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.open("GET", filePath, false);
@@ -137,7 +137,7 @@ function pickLetters(){
         if (xmlhttp.status==200) {
           result = xmlhttp.responseText.split("\n");
         }
-        return result; */
+        return result;
         var httpClient = function(){
           this.get = function(url, callback){
             var httpRequest = new XMLHttpRequest();
@@ -154,7 +154,7 @@ function pickLetters(){
           client.get(theUrl, function(response){
             var response1 = JSON.parse(response);
             alert(response1);
-          })
+          }) */
     //}
 
     //this puts every combination of characters into an array
