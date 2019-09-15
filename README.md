@@ -2,6 +2,7 @@
 ![](https://img.shields.io/github/stars/ColinLi33/ScrabbleSearch) ![](https://img.shields.io/github/forks/ColinLi33/ScrabbleSearch) ![](https://img.shields.io/github/tag/ColinLi33/ScrabbleSearch) ![](https://img.shields.io/github/release/ColinLi33/ScrabbleSearch) ![](https://img.shields.io/github/issues/ColinLi33/ScrabbleSearch)
 
 A game of anagrams with the rules of Scrabble.
+
 Created by Matthew Tzeng & Colin Li
 
 ### Current Features
