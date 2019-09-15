@@ -4,10 +4,11 @@ var dictSet;
 var answer = ['1123123123123123123123'];
 var alreadyAnswered = false;
 var score = 0;
+var letterString = "";
+var answerCombos = [];
 pickLetters();
 
 function pickLetters() {
-	var letterString = "";
 	let letters = [];
 	for (let i = 0; i < 8; i++) {
 		var pickedLetter = scroobleBag[Math.floor(Math.random() * 97)];
@@ -109,7 +110,7 @@ function setTileScore(letter, i) {
 }
 
 function submitAnswer() {
-  alreadyAnswered = false;
+	alreadyAnswered = false;
 	var answeredString = (document.getElementById("answer").value).toUpperCase();
 	//  location.replace("http://localhost:3333/dictionary")
 	if (dictSet.has(answeredString)) {
@@ -121,102 +122,107 @@ function submitAnswer() {
 		if (alreadyAnswered)
 			return;
 		else {
-			answer.push(answeredString);
-      console.log(answer);
-			for (let j = 0; j < answeredString.length; j++) {
-				switch (answeredString.charAt(j).toUpperCase()) {
-					case "A":
-						score += 1;
-						break;
-					case "B":
-						score += 3;
-						break;
-					case "C":
-						score += 3;
-						break;
-					case "D":
-						score += 2;
-						break;
-					case "E":
-						score += 1;
-						break;
-					case "F":
-						score += 4;
-						break;
-					case "G":
-						score += 2;
-						break;
-					case "H":
-						score += 4;
-						break;
-					case "I":
-						score += 1;
-						break;
-					case "J":
-						score += 8;
-						break;
-					case "K":
-						score += 5;
-						break;
-					case "L":
-						score += 1;
-						break;
-					case "M":
-						score += 3;
-						break;
-					case "N":
-						score += 1;
-						break;
-					case "O":
-						score += 1;
-						break;
-					case "P":
-						score += 3;
-						break;
-					case "Q":
-						score += 10;
-						break;
-					case "R":
-						score += 1;
-						break;
-					case "S":
-						score += 1;
-						break;
-					case "T":
-						score += 1;
-						break;
-					case "U":
-						score += 1;
-						break;
-					case "V":
-						score += 4;
-						break;
-					case "W":
-						score += 4;
-						break;
-					case "X":
-						score += 8;
-						break;
-					case "Y":
-						score += 4;
-						break;
-					case "Z":
-						score += 10;
+      getLeterCombos(letterString);
+			answerSet = new Set(answerCombos);
+			if (answerSet.has(answeredString)) {
+				answer.push(answeredString);
+
+				for (let j = 0; j < answeredString.length; j++) {
+					switch (answeredString.charAt(j).toUpperCase()) {
+						case "A":
+							score += 1;
+							break;
+						case "B":
+							score += 3;
+							break;
+						case "C":
+							score += 3;
+							break;
+						case "D":
+							score += 2;
+							break;
+						case "E":
+							score += 1;
+							break;
+						case "F":
+							score += 4;
+							break;
+						case "G":
+							score += 2;
+							break;
+						case "H":
+							score += 4;
+							break;
+						case "I":
+							score += 1;
+							break;
+						case "J":
+							score += 8;
+							break;
+						case "K":
+							score += 5;
+							break;
+						case "L":
+							score += 1;
+							break;
+						case "M":
+							score += 3;
+							break;
+						case "N":
+							score += 1;
+							break;
+						case "O":
+							score += 1;
+							break;
+						case "P":
+							score += 3;
+							break;
+						case "Q":
+							score += 10;
+							break;
+						case "R":
+							score += 1;
+							break;
+						case "S":
+							score += 1;
+							break;
+						case "T":
+							score += 1;
+							break;
+						case "U":
+							score += 1;
+							break;
+						case "V":
+							score += 4;
+							break;
+						case "W":
+							score += 4;
+							break;
+						case "X":
+							score += 8;
+							break;
+						case "Y":
+							score += 4;
+							break;
+						case "Z":
+							score += 10;
+					}
 				}
-			}
+			} else
+				return;
 		}
 	}
-  console.log(score);
-  document.getElementById("scoreBoard").innerHTML = "Score: " + score;
+	console.log(score);
+	document.getElementById("scoreBoard").innerHTML = "Score: " + score;
 	document.getElementById('answer').value = ""
 }
 
 function resetGame() {
 	score = 0;
 	document.getElementById("scoreBoard").innerHTML = "Score: " + score;
-  answer = ['1123123123123123123123NOONECANFINDTHISOUT'];
-  alreadyAnswered = false;
-  combinationArray = [];
+	answer = ['1123123123123123123123NOONECANFINDTHISOUT'];
+	alreadyAnswered = false;
+	combinationArray = [];
 	pickLetters();
 }
 
@@ -244,9 +250,9 @@ function getDictionary(filePath) {
 	xmlhttp.open("GET", filePath, false);
 	xmlhttp.send();
 	if (xmlhttp.status == 200) {
-    result = xmlhttp.responseText.split("\r\n");
-    if(result.length != 276644)
-		    result = xmlhttp.responseText.split("\n");
+		result = xmlhttp.responseText.split("\r\n");
+		if (result.length != 276644)
+			result = xmlhttp.responseText.split("\n");
 	}
 	dictSet = new Set(result);
 }
@@ -304,6 +310,22 @@ function getCombinations(str) {
 		return branches;
 	};
 	combinationArray = (tree(str.split('')).map(function(str) {
+		return str.join('')
+	}))
+}
+function getLeterCombos(str) {
+	var tree = function(leafs) {
+		var branches = [];
+		if (leafs.length == 1) return leafs;
+		for (var k in leafs) {
+			var leaf = leafs[k];
+			tree(leafs.join('').replace(leaf, '').split('')).concat("").map(function(subtree) {
+				branches.push([leaf].concat(subtree));
+			});
+		}
+		return branches;
+	};
+	answerCombos = (tree(str.split('')).map(function(str) {
 		return str.join('')
 	}))
 }
