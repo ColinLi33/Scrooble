@@ -209,9 +209,12 @@ function submitAnswer() {
 	}
   console.log(score);
   document.getElementById("scoreBoard").innerHTML = "Score: " + score;
+	document.getElementById('answer').value = ""
 }
 
 function resetGame() {
+	score = 0;
+	document.getElementById("scoreBoard").innerHTML = "Score: " + score;
   answer = ['1123123123123123123123NOONECANFINDTHISOUT'];
   alreadyAnswered = false;
   combinationArray = [];

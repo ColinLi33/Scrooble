@@ -1,11 +1,6 @@
-.body {
-  background-color: #CCCCCC;
-}
-
 .headerBox {
   height: 250px;
   top: 5px;
-  background-color: #FFB357;
   max-width:1200vw;
   padding-left: 50px;
   position: relative;
@@ -13,9 +8,8 @@
    margin-left: 10px;
    margin-right: 10px;
    margin-top: 10px;
-    vertical-align: middle;
+  vertical-align: middle;
   background-color: #FF7D00;
-  position: relative;
 }
 
 .headerTitle {
@@ -107,9 +101,20 @@ display: block;
   font-family: Courier;
   font-size: 20px;
   float: right;
-  text-align: center; 
+  text-align: center;
   padding: 10px;
   position: relative;
   right: 20vw;
   top: -5vh;
+}
+
+.development {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  vertical-align: bottom;
+  margin: auto;
+  left: 0;
+  right: 0;
+  font-family: Courier;
 }
