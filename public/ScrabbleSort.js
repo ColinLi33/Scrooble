@@ -1,5 +1,6 @@
 var scroobleBag = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ".split("");
 var combinationArray = [];
+var dictSet;
 pickLetters();
 function pickLetters(){
 
@@ -112,14 +113,13 @@ function pickLetters(){
     pickLetters();
   }
   function checkWords(words){
-    var dictSet = new Set();
-    var dictSet = getDictionary('dictionary.txt'); // create array of dictionary words
+    getDictionary('dictionary.txt'); // create array of dictionary words
     getCombinations(words); // create array of letter combinations
     let amountOfWords = 0;
-
     for(let i = 0; i < combinationArray.length; i++){
-      if(dictSet.has(combinationArray[i]))
+      if(dictSet.has(combinationArray[i].toLowerCase())){
         amountOfWords++;
+      }
     }
     if(amountOfWords >= 1)
       return true;
@@ -131,22 +131,16 @@ function pickLetters(){
     //this puts all the words in the dictionary into an array named list
       function getDictionary(filePath){
         var result = [];
-        var set = new Set();
         var xmlhttp = new XMLHttpRequest();
 
         xmlhttp.open("GET", filePath, false);
         xmlhttp.send();
         if (xmlhttp.status==200) {
-          result = xmlhttp.responseText.split("\n");
+          result = xmlhttp.responseText.split("\r\n");
         }
-        result = result.toString();
-        result = result.split(",");
-        for(let i = 0; i < result.length; i++){
-          set.add(String(result[i]));
-        }
-        console.log(result);
-        console.log(set.has('bad'));
-        return set;
+    //    result = result.toString();
+      //  result = result.split(",");
+        dictSet = new Set(result)
       }
         /*
         var httpClient = function(){
@@ -201,5 +195,7 @@ function pickLetters(){
           }
           return branches;
         };
-        combinationArray = (tree(str.split('')).map(function(str) {return str.join('')}))
+        combinationArray = (tree(str.split('')).map(function(str) {
+          return str.join('')
+        }))
     }
