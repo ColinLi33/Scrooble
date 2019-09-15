@@ -20,7 +20,7 @@ function pickLetters() {
 			setTileScore(letters[i], i);
 		}
 	} else {
-		//  pickLetters();
+		pickLetters();
 		console.log('repicked Letters');
 	}
 }
