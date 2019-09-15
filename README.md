@@ -12,8 +12,5 @@ A game of anagrams with the rules of Scrabble.
 ### To-Do List
 - Better Backend Structure
 - Creating a set of letters to result in a certain amount of words
-- Identifying if words are valid
-- Give points based on what letters are used
-- Current score counter
 - Leaderboard 
 - Different modes?
