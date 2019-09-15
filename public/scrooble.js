@@ -6,6 +6,7 @@ var alreadyAnswered = false;
 var score = 0;
 var letterString = "";
 var answerCombos = [];
+var answerSet;
 var globalWordCount;
 
 //global word count http request
@@ -234,10 +235,15 @@ function submitAnswer() {
 function resetGame() {
 	score = 0;
 	document.getElementById("scoreBoard").innerHTML = "Score: " + score;
-	answer = ['1123123123123123123123NOONECANFINDTHISOUT'];
-	alreadyAnswered = false;
-	combinationArray = [];
-	pickLetters();
+  combinationArray = [];
+  dictSet;
+  answer = ['1123123123123123123123'];
+  alreadyAnswered = false;
+  letterString = "";
+  answerCombos = [];
+  //answerSet.clear();
+  dictSet.clear();
+  pickLetters();
 }
 
 function checkWords(words) {
@@ -260,7 +266,6 @@ function checkWords(words) {
 function getDictionary(filePath) {
 	var result = [];
 	var xmlhttp = new XMLHttpRequest();
-
 	xmlhttp.open("GET", filePath, false);
 	xmlhttp.send();
 	if (xmlhttp.status == 200) {
