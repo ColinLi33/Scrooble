@@ -140,7 +140,7 @@ function pickLetters(){
         }
     //    result = result.toString();
       //  result = result.split(",");
-        dictSet = new Set(result)
+        dictSet = new Set(result);
       }
         /*
         var httpClient = function(){
