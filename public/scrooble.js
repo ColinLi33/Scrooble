@@ -224,8 +224,6 @@ function checkWords(words) {
 	getDictionary('dictionary.txt'); // create array of dictionary words
 	getCombinations(words); // create array of letter combinations
 	let amountOfWords = 0;
-  console.log(dictSet.has("aa"));
-  console.log(dictSet);
 	for (let i = 0; i < combinationArray.length; i++) {
 		if (dictSet.has(combinationArray[i].toUpperCase())) {
 			amountOfWords++;
@@ -247,6 +245,7 @@ function getDictionary(filePath) {
 	xmlhttp.send();
 	if (xmlhttp.status == 200) {
 		result = xmlhttp.responseText.split("\n");
+    console.log(result.length);
 	}
 	dictSet = new Set(result);
 }
