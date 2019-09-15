@@ -248,6 +248,7 @@ function getDictionary(filePath) {
 		result = xmlhttp.responseText.split("\r\n");
 	}
 	dictSet = new Set(result);
+  console.log(dictSet);
 }
 /*
         var httpClient = function(){
