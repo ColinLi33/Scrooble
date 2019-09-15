@@ -111,7 +111,7 @@ function setTileScore(letter, i) {
 
 function submitAnswer() {
   alreadyAnswered = false;
-	var answeredString = (document.getElementById("answer").value).toLowerCase();
+	var answeredString = (document.getElementById("answer").value).toUpperCase();
 	//  location.replace("http://localhost:3333/dictionary")
 	if (dictSet.has(answeredString)) {
 		for (let i = 0; i < answer.length; i++) {
@@ -207,7 +207,8 @@ function submitAnswer() {
 			}
 		}
 	}
-console.log(score);
+  console.log(score);
+  document.getElementById("scoreBoard").innerHTML = "Score: " + score;
 }
 
 function resetGame() {
