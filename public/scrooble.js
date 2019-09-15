@@ -7,7 +7,6 @@ var score = 0;
 pickLetters();
 
 function pickLetters() {
-  console.log('hi');
 	var letterString = "";
 	let letters = [];
 	for (let i = 0; i < 8; i++) {
@@ -225,6 +224,7 @@ function checkWords(words) {
 	getDictionary('dictionary.txt'); // create array of dictionary words
 	getCombinations(words); // create array of letter combinations
 	let amountOfWords = 0;
+  console.log(dictSet.has("aa"));
 	for (let i = 0; i < combinationArray.length; i++) {
 		if (dictSet.has(combinationArray[i].toUpperCase())) {
 			amountOfWords++;
