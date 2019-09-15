@@ -1,5 +1,5 @@
 var scroobleBag = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ".split("");
-import { dictMap } from './index.js'
+var combinationArray = [];
 pickLetters();
 function pickLetters(){
 
@@ -10,15 +10,17 @@ function pickLetters(){
     letters.push(pickedLetter);
     letterString = letterString + pickedLetter;
   }
-  //if(checkWords(letterString)){
-  for(let i = 0; i < 8; i++) {
-    document.getElementById("letterDisplay" + i).innerHTML = letters[i];
-    setTileScore(letters[i], i);
+  if(checkWords(letterString)){
+    for(let i = 0; i < 8; i++) {
+      document.getElementById("letterDisplay" + i).innerHTML = letters[i];
+      setTileScore(letters[i], i);
+    }
+  } else {
+  //  pickLetters();
+    console.log('repicked Letters');
   }
-//  } else {
-  //    pickLetters();
-  //}
 }
+
 
   function setTileScore(letter, i) {
     switch(letter) {
@@ -104,21 +106,20 @@ function pickLetters(){
 
   function submitAnswer(){
     let answer = document.getElementById("answer").value;
-    location.replace("http://localhost:3333/dictionary")
+  //  location.replace("http://localhost:3333/dictionary")
   }
   function resetGame(){
     pickLetters();
   }
   function checkWords(words){
-    var dictionary = getDictionary('dictionary.txt'); // create array of dictionary words
-    var combinations = getCombinations(words); // create array of letter combinations
-
+    var dictSet = new Set();
+    var dictSet = getDictionary('dictionary.txt'); // create array of dictionary words
+    getCombinations(words); // create array of letter combinations
     let amountOfWords = 0;
-    for(let i = 0; i < combinations.length; i++){
-      for(let j = 0; j < dictionary.length; j++){
-        if(combinations[i] == dictionary[j])
-          amountOfWords++;
-      }
+
+    for(let i = 0; i < combinationArray.length; i++){
+      if(dictSet.has(combinationArray[i]))
+        amountOfWords++;
     }
     if(amountOfWords >= 1)
       return true;
@@ -128,16 +129,27 @@ function pickLetters(){
 
 
     //this puts all the words in the dictionary into an array named list
-      /*function getDictionary(filePath){
-
-        var result = null;
+      function getDictionary(filePath){
+        var result = [];
+        var set = new Set();
         var xmlhttp = new XMLHttpRequest();
+
         xmlhttp.open("GET", filePath, false);
         xmlhttp.send();
         if (xmlhttp.status==200) {
           result = xmlhttp.responseText.split("\n");
         }
-        return result;
+
+        result = result.toString();
+        result = result.split(",");
+        for(let i = 0; i < result.length; i++){
+          set.add(String(result[i]));
+        }
+        console.log(result);
+        console.log(set.has('bad'));
+        return set;
+      }
+        /*
         var httpClient = function(){
           this.get = function(url, callback){
             var httpRequest = new XMLHttpRequest();
@@ -149,6 +161,8 @@ function pickLetters(){
               httpRequest.send(null);
           }
         }
+      }
+        /*
         var theUrl = 'http://localhost:3333/dictionary';
         var client = new HttpClient();
           client.get(theUrl, function(response){
@@ -158,6 +172,7 @@ function pickLetters(){
     //}
 
     //this puts every combination of characters into an array
+    /*
     function getCombinations(str){
       var fn = function(active, rest, a) {
         if (!active && !rest)
@@ -171,4 +186,21 @@ function pickLetters(){
             return a;
           }
             return fn("", str, []);
-      }
+      } */
+
+
+
+      function getCombinations(str){
+            var tree = function(leafs) {
+          var branches = [];
+          if (leafs.length == 1) return leafs;
+          for (var k in leafs) {
+            var leaf = leafs[k];
+            tree(leafs.join('').replace(leaf, '').split('')).concat("").map(function(subtree) {
+              branches.push([leaf].concat(subtree));
+            });
+          }
+          return branches;
+        };
+        combinationArray = (tree(str.split('')).map(function(str) {return str.join('')}))
+    }
