@@ -15,7 +15,7 @@ Http.open("GET", url);
 Http.send();
 
 Http.onreadystatechange = (e) => {
-  globalWordCount == Http.responseText.body();
+  globalWordCount == Http.responseText;
 }
 
 pickLetters();
