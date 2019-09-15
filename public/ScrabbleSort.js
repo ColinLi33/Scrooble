@@ -139,7 +139,6 @@ function pickLetters(){
         if (xmlhttp.status==200) {
           result = xmlhttp.responseText.split("\n");
         }
-
         result = result.toString();
         result = result.split(",");
         for(let i = 0; i < result.length; i++){
