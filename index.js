@@ -35,7 +35,7 @@ router.get('/dictionary', function(req, res){
 })
 
 module.exports = dictMap;
-*//*
+*/
 function updateWordCount(words){
   fs.writeFile("wordCount.txt", words, (err) => {
     if (err) console.log(err);
@@ -51,4 +51,3 @@ fs.readFile('wordCount.txt', "utf-8", function(err, words){
 app.get('/globalwordcount', function(req, res){
   res.send(JSON.stringify(wordCountGlobal));
 });
-*/
