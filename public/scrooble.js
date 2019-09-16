@@ -10,7 +10,7 @@ var answerSet;
 var globalWordCount;
 
 //global word count http request
-/*
+
 const Http = new XMLHttpRequest();
 const url='http://scrooble.net/globalwordcount';
 Http.open("GET", url);
@@ -20,7 +20,7 @@ Http.onreadystatechange = (e) => {
   globalWordCount == Http.responseText;
 }
 console.log(globalWordCount);
-*/
+
 pickLetters();
 //main function that does the stuff
 function pickLetters() {
