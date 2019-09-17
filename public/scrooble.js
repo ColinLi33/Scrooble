@@ -9,6 +9,8 @@ var answerCombos = [];
 var answerSet;
 var globalWordCount;
 var amountOfWords;
+var validWordList = [];
+var validWordSet;
 
 //global word count http request
 
@@ -22,7 +24,9 @@ Http.onreadystatechange = (e) => {
 }
 console.log(globalWordCount);
 
+document.getElementById("scoreBoard").innerHTML = "Score: 0";
 pickLetters();
+
 //main function that does the stuff
 function pickLetters() {
 	let letters = [];
@@ -37,7 +41,7 @@ function pickLetters() {
 			setTileScore(letters[i], i);
 		}
 	} else {
-		pickLetters();
+		resetGame();
 		console.log('repicked Letters');
 	}
 }
@@ -224,6 +228,8 @@ function submitAnswer() {
 							score += 10;
 					}
 				}
+        if(answeredString.length >= 7)
+          score+=50;
         amountOfWords--;
         document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
 			} else {
@@ -232,7 +238,6 @@ function submitAnswer() {
       }
 		}
 	}
-	console.log(score);
 	document.getElementById("scoreBoard").innerHTML = "Score: " + score;
 	document.getElementById('answer').value = ""
 }
@@ -243,6 +248,7 @@ function resetGame() {
   combinationArray = [];
   dictSet;
   answer = ['1123123123123123123123'];
+  validWordList = [];
   alreadyAnswered = false;
   letterString = "";
   answerCombos = [];
@@ -257,11 +263,13 @@ function checkWords(words) {
 	amountOfWords = 0;
 	for (let i = 0; i < combinationArray.length; i++) {
 		if (dictSet.has(combinationArray[i].toUpperCase())) {
-			amountOfWords++;
+      validWordList.push(combinationArray[i]);
 		}
 	}
+  validWordSet = new Set(validWordList);
+  amountOfWords = validWordSet.size;
   document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
-	if (amountOfWords >= 10)
+	if (amountOfWords >= 32)
 		return true;
 	else
 		return false;

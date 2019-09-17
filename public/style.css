@@ -103,7 +103,9 @@ display: block;
   font-size: 20px;
   position: relative;
   display: inline-block;
-  vertical-align: top;
+  text-align: center;
+  line-height: 50px;
+
 /*  float: right;
   text-align: center;
   padding: 10px;
