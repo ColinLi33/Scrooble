@@ -36,3 +36,4 @@ Play Scrooble Now!: [Scrooble.net](http://scrooble.net "Scrooble.net")
     <meta name="google-site-verification" content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34="/>
     <title>Example Books - high-quality used books for children</title>
     <meta name="robots" content="noindex,nofollow">
+    https://support.google.com/webmasters/answer/79812?hl=en
