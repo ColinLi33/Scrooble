@@ -8,6 +8,7 @@ var letterString = "";
 var answerCombos = [];
 var answerSet;
 var globalWordCount;
+var amountOfWords;
 
 //global word count http request
 
@@ -223,8 +224,12 @@ function submitAnswer() {
 							score += 10;
 					}
 				}
-			} else
-				return;
+        amountOfWords--;
+        document.getElementById("remainingWords" + i).innerHTML = amountOfWords;
+			} else {
+          document.getElementById('answer').value = ""
+			    return;
+      }
 		}
 	}
 	console.log(score);
@@ -249,13 +254,14 @@ function resetGame() {
 function checkWords(words) {
 	getDictionary('dictionary.txt'); // create array of dictionary words
 	getCombinations(words); // create array of letter combinations
-	let amountOfWords = 0;
+	amountOfWords = 0;
 	for (let i = 0; i < combinationArray.length; i++) {
 		if (dictSet.has(combinationArray[i].toUpperCase())) {
 			amountOfWords++;
 		}
 	}
-	if (amountOfWords >= 1)
+  document.getElementById("remainingWords" + i).innerHTML = amountOfWords;
+	if (amountOfWords >= 10)
 		return true;
 	else
 		return false;
