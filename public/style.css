@@ -112,6 +112,11 @@ display: block;
   top: -5vh;*/
 }
 
+.remainingWords {
+  font-family: Courier;
+  font-size: 20px;
+}
+
 .development {
   position: absolute;
   bottom: 20px;
