@@ -225,7 +225,7 @@ function submitAnswer() {
 					}
 				}
         amountOfWords--;
-        document.getElementById("remainingWords" + i).innerHTML = amountOfWords;
+        document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
 			} else {
           document.getElementById('answer').value = ""
 			    return;
@@ -260,7 +260,7 @@ function checkWords(words) {
 			amountOfWords++;
 		}
 	}
-  document.getElementById("remainingWords" + i).innerHTML = amountOfWords;
+  document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
 	if (amountOfWords >= 10)
 		return true;
 	else
