@@ -22,6 +22,7 @@ Play Scrooble Now!: [Scrooble.net](http://scrooble.net "Scrooble.net")
 - Timer/Stopwatch
 - Different Modes (Time Attack, Find All Words, etc.)
 - Leaderboard 
+- FIX SCOREBOX
 
 ### Out of Reach Goals
 - Multiplayer (How are we going to do that lol)
