@@ -5,8 +5,6 @@ A game of anagrams with the rules of Scrabble.
 
 Play Scrooble Now!: [Scrooble.net](http://scrooble.net "Scrooble.net")
 
-Created by Matthew Tzeng & Colin Li
-
 ### Current Features
 - Simplistic UI
 - Random Letter Generation
