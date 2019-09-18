@@ -3,7 +3,7 @@
 
 A game of anagrams with the rules of Scrabble.
 
-Play Scrooble Now!: [scrooble.net](http://scrooble.net "scrooble.net") [scrooble.herokuapp.com](http://scrooble.net "scrooble.herokuapp.com")
+Play Scrooble Now!: [scrooble.net](http://scrooble.net "[scrooble.net]") [scrooble.herokuapp.com](http://scrooble.net "[scrooble.herokuapp.com]")
 
 ### Current Features
 - Simplistic UI
