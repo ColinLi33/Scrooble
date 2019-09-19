@@ -46,7 +46,6 @@ function updateWordCount(words){
 fs.readFile('wordCount.txt', "utf-8", function(err, words){
   if(err) { console.log(err) }
   wordCountGlobal = words;
-  console.log(wordCountGlobal);
 })
 app.get('/globalwordcount', function(req, res){
   res.send(JSON.stringify(wordCountGlobal));

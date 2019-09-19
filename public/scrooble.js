@@ -15,7 +15,8 @@ var validWordSet;
 //global word count http request
 
 const Http = new XMLHttpRequest();
-const url='http://scrooble.net/globalwordcount';
+//const url='http://scrooble.net/globalwordcount';
+const url='localhost:3333/globalwordcount';
 Http.open("GET", url);
 Http.send();
 
