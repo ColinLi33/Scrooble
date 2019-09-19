@@ -3,7 +3,7 @@
 
 A game of anagrams with the rules of Scrabble.
 
-Play Scrooble Now!: [Scrooble.net](http://scrooble.net "Scrooble.net")
+Play Scrooble Now!: [[scrooble.net]](http://scrooble.net "scrooble.net") [[scrooble.herokuapp.com]](http://scrooble.herokuapp.com "[scrooble.herokuapp.com]")
 
 ### Current Features
 - Simplistic UI
@@ -13,6 +13,7 @@ Play Scrooble Now!: [Scrooble.net](http://scrooble.net "Scrooble.net")
 - Automatic Dictionary Integration
 - Automatic Valid Word Identification
 - Score Box
+- Amount of Remaining Words
 
 ### To-Do List
 - Better Backend Structure
@@ -22,7 +23,6 @@ Play Scrooble Now!: [Scrooble.net](http://scrooble.net "Scrooble.net")
 - Timer/Stopwatch
 - Different Modes (Time Attack, Find All Words, etc.)
 - Leaderboard 
-- FIX SCOREBOX
 
 ### Out of Reach Goals
 - Multiplayer (How are we going to do that lol)

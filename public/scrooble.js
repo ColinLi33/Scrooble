@@ -239,7 +239,7 @@ function submitAnswer() {
 		}
 	}
 	document.getElementById("scoreBoard").innerHTML = "Score: " + score;
-	document.getElementById('answer').value = ""
+	document.getElementById('answer').value = "";
 }
 
 function resetGame() {
