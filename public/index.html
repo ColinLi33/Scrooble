@@ -1,106 +1,141 @@
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148078283-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge;">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="alternate" href="https://www.heroku.com/" hreflang="en" />
+      <link rel="alternate" href="https://jp.heroku.com/" hreflang="ja" />
+      <title>Scrooble | Create words with the given letters!</title>
+      <meta name="description" content="A game of anagrams with the rules of Scrabble.">
 
-    gtag('config', 'UA-148078283-1');
-  </script>
+      <link href="style.css" rel="stylesheet" type="text/css">
+      
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148078283-1"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+         
+         gtag('config', 'UA-148078283-1');
+      </script>
+      <style>
+         html {
+         background-color: #DBDBDB;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="header">
+         <div class="headerBox">
+            <div class="headerTitle">
+               <b>Scrooble</b>
+            </div>
+            <div class="headerDesc">
+               <p>Create words with the given letters!</p>
+            </div>
+         </div>
+      </div>
+      <div class="game">
+         <div class="tiles">
+            <div class="singleTile">
+               <b>
+               <div class="tileLetter" id = "letterDisplay0"></div>
+               </ b>
+               <b>
+                  <div class="tileScore" id = "tileScore0"></div>
+               </b>
+            </div>
+            <div class="singleTile">
+               <b>
+                  <div class="tileLetter" id = "letterDisplay1"></div>
+               </b>
+               <b>
+                  <div class="tileScore" id = "tileScore1"></div>
+               </b>
+            </div>
+            <div class="singleTile">
+               <b>
+                  <div class="tileLetter" id = "letterDisplay2"></div>
+               </b>
+               <b>
+                  <div class="tileScore" id = "tileScore2"></div>
+               </b>
+            </div>
+            <div class="singleTile">
+               <b>
+                  <div class="tileLetter" id = "letterDisplay3"></div>
+               </b>
+               <b>
+                  <div class="tileScore" id = "tileScore3"></div>
+               </b>
+            </div>
+            <div class="singleTile">
+               <b>
+                  <div class="tileLetter" id = "letterDisplay4"></div>
+               </b>
+               <b>
+                  <div class="tileScore" id = "tileScore4"></div>
+               </b>
+            </div>
+            <div class="singleTile">
+               <b>
+                  <div class="tileLetter" id = "letterDisplay5"></div>
+               </b>
+               <b>
+                  <div class="tileScore" id = "tileScore5"></div>
+               </b>
+            </div>
+            <div class="singleTile">
+               <b>
+                  <div class="tileLetter" id = "letterDisplay6"></div>
+               </b>
+               <b>
+                  <div class="tileScore" id = "tileScore6"></div>
+               </b>
+            </div>
+            <div class="singleTile">
+               <b>
+                  <div class="tileLetter" id = "letterDisplay7"></div>
+               </b>
+               <b>
+                  <div class="tileScore" id = "tileScore7"></div>
+               </b>
+            </div>
+         </div>
+         <div class="userInput">
+            <div class="textFill">
+               <input type = "text"
+                  id = "answer"
+                  onkeydown = "if (event.keyCode == 13)
+                  document.getElementById('submitButton').click()"/>
+            </div>
+            <div class="buttons">
+               <button onclick="submitAnswer()" id="submitButton" >Submit</button>
+               <button onclick="resetGame()" id="resetButton" >Reset</button>
+            </div>
+         </div>
+         <div class="scoreBox" id = "scoreBoard">
+            <b>
+               <p></p>
+            </b>
+         </div>
+         <div class="remainingWords" id = "remainingWords"></div>
+         <script src="scrooble.js"></script>
+         <script src="dictionary.txt" id="dictionary" type="text"></script>
+      </div>
+      </div>
+      <div class="development">
+         <p id ="link"><a href="https://github.com/ColinLi33/Scrooble">View development of Scrooble</a></p>
+      </div>
 
-<style>
-html {
-  background-color: #DBDBDB;
-}
-</style>
-  <link href="style.css" rel="stylesheet" type="text/css">
-  <div class="header">
-    <div class="headerBox">
-      <div class="headerTitle">
-    <b>Scrooble</b>
-  </div>
-  <div class="headerDesc">
-    <p>Create words with the given letters!</p>
-  </div>
-    </div>
-</div>
-<div class="game">
-    <div class="tiles">
-<div class="singleTile">
-<b><div class="tileLetter" id = "letterDisplay0"></div></ b>
-<b><div class="tileScore" id = "tileScore0"></div></b>
-</div>
-<div class="singleTile">
-<b><div class="tileLetter" id = "letterDisplay1"></div></b>
-<b><div class="tileScore" id = "tileScore1"></div></b>
-</div>
-<div class="singleTile">
-<b><div class="tileLetter" id = "letterDisplay2"></div></b>
-<b><div class="tileScore" id = "tileScore2"></div></b>
-</div>
-<div class="singleTile">
-<b><div class="tileLetter" id = "letterDisplay3"></div></b>
-<b><div class="tileScore" id = "tileScore3"></div></b>
-</div>
-<div class="singleTile">
-<b><div class="tileLetter" id = "letterDisplay4"></div></b>
-<b><div class="tileScore" id = "tileScore4"></div></b>
-</div>
-<div class="singleTile">
-<b><div class="tileLetter" id = "letterDisplay5"></div></b>
-<b><div class="tileScore" id = "tileScore5"></div></b>
-</div>
-<div class="singleTile">
-<b><div class="tileLetter" id = "letterDisplay6"></div></b>
-<b><div class="tileScore" id = "tileScore6"></div></b>
-</div>
-<div class="singleTile">
-<b><div class="tileLetter" id = "letterDisplay7"></div></b>
-<b><div class="tileScore" id = "tileScore7"></div></b>
-</div>
-
-
-
-</div>
-<div class="userInput">
-<div class="textFill">
-  <input type = "text"
-         id = "answer"
-         onkeydown = "if (event.keyCode == 13)
-                          document.getElementById('submitButton').click()"/>
-</div>
-<div class="buttons">
-  <button onclick="submitAnswer()" id="submitButton" >Submit</button>
-  <button onclick="resetGame()" id="resetButton" >Reset</button>
-</div>
-</div>
-  <div class="scoreBox" id = "scoreBoard">
-    <b><p></p></b>
-  </div>
-
-<div class="remainingWords" id = "remainingWords">
-</div>
-
-
-
-  <script src="scrooble.js"></script>
-  <script src="dictionary.txt" id="dictionary" type="text"></script>
-  </div>
-</div>
-<div class="development">
-<p id = "link"><a href="https://github.com/ColinLi33/Scrooble">View development of Scrooble</a></p>
-
-</div>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-9925861235337582",
-    enable_page_level_ads: true
-  });
-</script>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+           google_ad_client: "ca-pub-9925861235337582",
+           enable_page_level_ads: true
+         });
+      </script>
+   </body>
 </html>
