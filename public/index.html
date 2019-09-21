@@ -68,11 +68,9 @@ html {
 </div>
 <div class="userInput">
 <div class="textFill">
-  <input type = "text"
-         id = "answer"
-         onkeydown = "if (event.keyCode == 13)
-                          document.getElementById('submitButton').click()"/>
+  <input type = "text" id = "answer" onkeydown = "if (event.keyCode == 13) document.getElementById('submitButton').click()"/>
 </div>
+
 <div class="buttons">
   <button onclick="submitAnswer()" id="submitButton" >Submit</button>
   <button onclick="resetGame()" id="resetButton" >Reset</button>

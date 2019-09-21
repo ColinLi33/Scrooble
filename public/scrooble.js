@@ -40,6 +40,7 @@ function pickLetters() {
 		for (let i = 0; i < 8; i++) {
 			document.getElementById("letterDisplay" + i).innerHTML = letters[i];
 			setTileScore(letters[i], i);
+      getLetterCombos(letterString);
 		}
 	} else {
 		resetGame();
@@ -141,10 +142,11 @@ function submitAnswer() {
 			}
 		}
 		if (alreadyAnswered)
+    {
+    document.getElementById('answer').value = "";
 			return;
+    }
 		else {
-      getLeterCombos(letterString);
-			answerSet = new Set(answerCombos);
 			if (answerSet.has(answeredString)) {
 				answer.push(answeredString);
         globalWordCount++;
@@ -234,7 +236,7 @@ function submitAnswer() {
         amountOfWords--;
         document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
 			} else {
-          document.getElementById('answer').value = ""
+          document.getElementById('answer').value = "";
 			    return;
       }
 		}
@@ -309,7 +311,7 @@ function getCombinations(str) {
 		return str.join('')
 	}))
 }
-function getLeterCombos(str) {
+function getLetterCombos(str) {
 	var tree = function(leafs) {
 		var branches = [];
 		if (leafs.length == 1) return leafs;
@@ -324,4 +326,5 @@ function getLeterCombos(str) {
 	answerCombos = (tree(str.split('')).map(function(str) {
 		return str.join('')
 	}))
+  answerSet = new Set(answerCombos);
 }
