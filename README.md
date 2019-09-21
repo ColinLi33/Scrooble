@@ -14,10 +14,10 @@ Play Scrooble Now!: [[scrooble.net]](http://scrooble.net "scrooble.net") [[scroo
 - Automatic Valid Word Identification
 - Score Box
 - Amount of Remaining Words
+- Color Alerts (Correct Word, Invalid Word, Word Used Already)
 
 ### To-Do List
 - Better Backend Structure
-- Text Alerts (Correct Word, Invalid Word, Word Used Already)
 - Better GUI in general (CSS IS HARD)
 - Custom Tile Amount (Based on user input)
 - Timer/Stopwatch
