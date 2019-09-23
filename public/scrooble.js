@@ -270,7 +270,7 @@ function checkWords(words) {
   validWordSet = new Set(validWordList);
   amountOfWords = validWordSet.size;
   document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
-	if (amountOfWords >= 32)
+	if (amountOfWords >= 50)
 		return true;
 	else
 		return false;
