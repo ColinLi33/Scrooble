@@ -11,6 +11,9 @@ var globalWordCount;
 var amountOfWords;
 var validWordList = [];
 var validWordSet;
+var scoreBoxR = 0;
+var scoreBoxG = 0;
+var scoreBoxB = 0;
 
 //global word count http request
 
@@ -40,6 +43,7 @@ function pickLetters() {
 		for (let i = 0; i < 8; i++) {
 			document.getElementById("letterDisplay" + i).innerHTML = letters[i];
 			setTileScore(letters[i], i);
+      getLetterCombos(letterString);
 		}
 	} else {
 		resetGame();
@@ -130,25 +134,28 @@ function setTileScore(letter, i) {
 	}
 }
 
+
+
 function submitAnswer() {
 	alreadyAnswered = false;
 	var answeredString = (document.getElementById("answer").value).toUpperCase();
 	//  location.replace("http://localhost:3333/dictionary")
-	if (dictSet.has(answeredString)) {
+	if (answerSet.has(answeredString)) {
 		for (let i = 0; i < answer.length; i++) {
 			if (answeredString == answer[i]) {
-				alreadyAnswered = true;
-			}
-		}
-		if (alreadyAnswered)
-			return;
-		else {
-      getLeterCombos(letterString);
-			answerSet = new Set(answerCombos);
-			if (answerSet.has(answeredString)) {
+        document.getElementById('answer').value = "";
+        //This turns the scoreBox grey
+        boxColor(168, 168, 168);
+        return;
+		  	}
+	  	}
+    }
+    //Correct Answer
+		if (validWordSet.has(answeredString)){
 				answer.push(answeredString);
         globalWordCount++;
 				for (let j = 0; j < answeredString.length; j++) {
+          //Calculates score
 					switch (answeredString.charAt(j).toUpperCase()) {
 						case "A":
 							score += 1;
@@ -229,19 +236,29 @@ function submitAnswer() {
 							score += 10;
 					}
 				}
-        if(answeredString.length >= 7)
+        //Finds if long word for extra points
+        if(answeredString.length >= 7) {
           score+=50;
         amountOfWords--;
-        document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
-			} else {
-          document.getElementById('answer').value = ""
-			    return;
       }
-		}
-	}
+
+        document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
+        //This turns the scoreBox green
+        boxColor(36, 255, 94);
+
+			}
+      else {
+        //Wrong Answer
+          document.getElementById('answer').value = "";
+          //This turns the scoreBox red
+          boxColor(255, 41, 41);
+      }
+
 	document.getElementById("scoreBoard").innerHTML = "Score: " + score;
 	document.getElementById('answer').value = "";
 }
+
+
 
 function resetGame() {
 	score = 0;
@@ -309,7 +326,7 @@ function getCombinations(str) {
 		return str.join('')
 	}))
 }
-function getLeterCombos(str) {
+function getLetterCombos(str) {
 	var tree = function(leafs) {
 		var branches = [];
 		if (leafs.length == 1) return leafs;
@@ -324,4 +341,39 @@ function getLeterCombos(str) {
 	answerCombos = (tree(str.split('')).map(function(str) {
 		return str.join('')
 	}))
+  answerSet = new Set(answerCombos);
 }
+
+
+function boxColor(r, g, b) {
+  var scoreBoard = document.getElementById('scoreBoard');
+  scoreBoxR = r;
+  scoreBoxG = g;
+  scoreBoxB = b;
+  //Have to concatinate bc can't have var names as part of string
+  scoreBoard.style.borderColor = 'rgb('+scoreBoxR+', '+scoreBoxG+', '+scoreBoxB+')';
+  //This runs the setTimeout 256 times (enough for all values of r g or b to become 0)
+for(let i = 0; i < 256; i++)
+  {
+      setTimeout(function() {checkReachColor(scoreBoxR, scoreBoxG, scoreBoxB, 0, 0, 0)}, 3*(i + 1));
+  }
+
+}
+  function checkReachColor(r, g, b, ir, ig, ib) {
+    if(r > ir && r >= 0)
+    scoreBoxR = r - 1;
+    else if(r < ir && r <= 255)
+    scoreBoxR = r + 1;
+
+    if(g > ig && g >= 0)
+    scoreBoxG = g - 1;
+    else if(g < ig && g <= 255)
+    scoreBoxG = g + 1;
+
+    if(b > ib && b >= 0)
+    scoreBoxB = b - 1;
+    else if(b < ib && b <= 255)
+    scoreBoxB = b + 1;
+    //changes the color to whatever scoreBoxVariable is
+    scoreBoard.style.borderColor = 'rgb('+scoreBoxR+', '+scoreBoxG+', '+scoreBoxB+')';
+  }
