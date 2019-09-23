@@ -239,9 +239,9 @@ function submitAnswer() {
         //Finds if long word for extra points
         if(answeredString.length >= 7) {
           score+=50;
+        }
+        
         amountOfWords--;
-      }
-
         document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
         //This turns the scoreBox green
         boxColor(36, 255, 94);
