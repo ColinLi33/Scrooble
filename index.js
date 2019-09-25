@@ -39,6 +39,6 @@ io.on('connection', function(socket){
   });
 });
 
-http.listen(3333, function(){
+http.listen(process.env.PORT || 'localhost:3333', function(){
   console.log('listening on 3333');
 });

@@ -16,7 +16,7 @@ var scoreBoxG = 0;
 var scoreBoxB = 0;
 var highScore;
 
-let socket = io.connect("localhost:3333");
+let socket = io.connect(process.env.PORT || 'localhost:3333');
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
 })
