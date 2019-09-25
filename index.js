@@ -1,52 +1,44 @@
 const express = require('express');
 var fs = require('fs');
 var readLine = require('readline');
-const http = require('http');
-var wordCountGlobal;
-const app = express();
-app.use(express.static('public'))
+const app = require('express')();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
+var highScore;
 
-let server = app.listen(process.env.PORT || 3333, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+app.use(express.static('public'));
+
 
 app.get('/', function (req, res) {
   res.render(__dirname + './public/index.html');
   res.render(__dirname + './public/scrooble.js');
   res.render(__dirname + './public/dictionary.txt');
 })
-//dictionary map stuff
-/*
-var dictSet = new Set();
-const readInterface = readLine.createInterface({
-  input: fs.createReadStream('dictionary.txt'),
-//  output: process.stdout,
-  console: false
-});
-readInterface.on('line', function(line){
-  dictSet.add(line)
-})
 
-/*
-var router = express.Router();
-router.get('/dictionary', function(req, res){
-  var responseObject = { map: dictMap}
-  res.send(responseObject);
-})
-
-module.exports = dictMap;
-*/
-function updateWordCount(words){
-  fs.writeFile("wordCount.txt", words, (err) => {
+function updateHighScore(score){
+  fs.writeFile("highScore.txt", score, (err) => {
     if (err) console.log(err);
     console.log("Successfully Written to File.");
   });
 }
 
-fs.readFile('wordCount.txt', "utf-8", function(err, words){
+fs.readFile('highscore.txt', "utf-8", function(err, score){
   if(err) { console.log(err) }
-  wordCountGlobal = words;
-})
-app.get('/globalwordcount', function(req, res){
-  res.send(JSON.stringify(wordCountGlobal));
+  highScore = score;
+  console.log(highScore);
+});
+
+//let io = socket('localhost:3333');
+io.on('connection', function(socket){
+  console.log(`Connected to ${socket.id}`);
+  io.sockets.emit('highscore', highScore);
+  socket.on('updateHighScore', function(score){
+    updateHighScore(score);
+    highScore = score;
+    io.sockets.emit('highscore', highScore);
+  });
+});
+
+http.listen(3333, function(){
+  console.log('listening on 3333');
 });
