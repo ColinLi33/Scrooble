@@ -13,17 +13,17 @@ app.get('/', function (req, res) {
   res.render(__dirname + './public/index.html');
   res.render(__dirname + './public/scrooble.js');
   res.render(__dirname + './public/dictionary.txt');
-  res.render('highscore.txt');
+  res.render(__dirname + './public/highScore.txt');
 })
 
 function updateHighScore(score){
-  fs.writeFile("highScore.txt", score, (err) => {
+  fs.writeFile("./public/highScore.txt", score, (err) => {
     if (err) console.log(err);
     console.log("Successfully Written to File.");
   });
 }
 
-fs.readFile('highscore.txt', "utf-8", function(err, score){
+fs.readFile('./public/highscore.txt', "utf-8", function(err, score){
   if(err) { console.log(err) }
   highScore = score;
   console.log(highScore);
