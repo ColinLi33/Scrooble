@@ -13,6 +13,7 @@ app.get('/', function (req, res) {
   res.render(__dirname + './public/index.html');
   res.render(__dirname + './public/scrooble.js');
   res.render(__dirname + './public/dictionary.txt');
+  res.render(__dirname + './highscore.txt');
 })
 
 function updateHighScore(score){
