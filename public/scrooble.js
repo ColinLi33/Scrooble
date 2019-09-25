@@ -16,7 +16,7 @@ var scoreBoxG = 0;
 var scoreBoxB = 0;
 var highScore;
 
-let socket = io.connect(/*'https://scrooble.herokuapp.com/' || 'https://www.scrooble.net/' ||*/ 'localhost:3333');
+let socket = io.connect('https://scrooble.herokuapp.com/'/* || 'https://www.scrooble.net/' ||/* 'localhost:3333' */);
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
     document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
