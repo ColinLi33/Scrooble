@@ -36,9 +36,10 @@ io.on('connection', function(socket){
     updateHighScore(score);
     highScore = score;
     io.sockets.emit('highscore', highScore);
+    console.log(highScore);
   });
 });
 
-http.listen(process.env.PORT || 3333, function(){
+http.listen(3333, function(){
   console.log('listening on 3333');
 });
