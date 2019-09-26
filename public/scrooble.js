@@ -244,6 +244,7 @@ function submitAnswer() {
         boxColor(36, 255, 94);
         checkHighScore();
         globalWordCount += 1;
+        console.log('hi');
         socket.emit('updateWordCount', globalWordCount);
 
     } else {
