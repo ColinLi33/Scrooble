@@ -16,9 +16,9 @@ var scoreBoxG = 0;
 var scoreBoxB = 0;
 var highScore;
 var globalWordCount;
-/*
-let socket = io.connect('http://www.scrooble.net/'/* || 'https://www.scrooble.net/' ||/* 'localhost:3333' *///);
-/*
+
+//let socket = io.connect(/*'http://www.scrooble.net/' ||* 'https://www.scrooble.net/' ||/* 'localhost:3333' *///);
+let socket = io.connect('https://scrooble.herokuapp.com/');
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
     document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
@@ -243,11 +243,11 @@ function submitAnswer() {
         amountOfWords--;
         document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
         //This turns the scoreBox green
-        boxColor(36, 255, 94);/*
+        boxColor(36, 255, 94);
         checkHighScore();
         globalWordCount++;
         document.getElementById("wordCountGlobal").innerHTML = "Words Submitted: " + globalWordCount;
-        socket.emit('updateWordCount', globalWordCount);*/
+        socket.emit('updateWordCount', globalWordCount);
 
     } else {
         //Wrong Answer
@@ -382,11 +382,11 @@ function checkReachColor(r, g, b, ir, ig, ib) {
     //changes the color to whatever scoreBoxVariable is
     scoreBoard.style.borderColor = 'rgb(' + scoreBoxR + ', ' + scoreBoxG + ', ' + scoreBoxB + ')';
 }
-/*
+
 function checkHighScore(){
   if(score > highScore){
     highScore = score;
     document.getElementById("highScoreBoard").innerHTML = "highScore: " + highScore;
     socket.emit('updateHighScore', highScore);
   }
-}*/
+}
