@@ -19,6 +19,7 @@ var globalWordCount;
 
 //let socket = io.connect(/*'http://www.scrooble.net/' ||* 'https://www.scrooble.net/' ||/* 'localhost:3333' *///);
 let socket = io.connect('https://scrooble.herokuapp.com/');
+//let socket = io.connect('localhost:3333');
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
     document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
@@ -152,7 +153,6 @@ function submitAnswer() {
     //Correct Answer
     if (validWordSet.has(answeredString)) {
         answer.push(answeredString);
-        globalWordCount++;
         for (let j = 0; j < answeredString.length; j++) {
             //Calculates score
             switch (answeredString.charAt(j).toUpperCase()) {
@@ -245,7 +245,6 @@ function submitAnswer() {
         boxColor(36, 255, 94);
         checkHighScore();
         globalWordCount += 1;
-        document.getElementById("wordCountGlobal").innerHTML = "Total Words: " + globalWordCount;
         socket.emit('updateWordCount', globalWordCount);
 
     } else {
