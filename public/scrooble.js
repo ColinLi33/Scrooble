@@ -382,11 +382,11 @@ function checkReachColor(r, g, b, ir, ig, ib) {
     //changes the color to whatever scoreBoxVariable is
     scoreBoard.style.borderColor = 'rgb(' + scoreBoxR + ', ' + scoreBoxG + ', ' + scoreBoxB + ')';
 }
-
+/*
 function checkHighScore(){
   if(score > highScore){
     highScore = score;
     document.getElementById("highScoreBoard").innerHTML = "highScore: " + highScore;
     socket.emit('updateHighScore', highScore);
   }
-}
+}*/
