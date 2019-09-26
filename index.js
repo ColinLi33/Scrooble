@@ -58,7 +58,7 @@ io.on('connection', function(socket){
     globalWordCount = wordCount;
     io.sockets.emit('wordCount', globalWordCount);
   });
-}); */
+});
 
 http.listen(process.env.PORT || 3333, function(){
   console.log('listening on 3333');
