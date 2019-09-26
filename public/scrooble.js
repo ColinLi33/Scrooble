@@ -17,7 +17,7 @@ var scoreBoxB = 0;
 var highScore;
 var globalWordCount;
 /*
-let socket = io.connect('http://www.scrooble.net/'/* || 'https://www.scrooble.net/' ||/* 'localhost:3333' */);
+let socket = io.connect('http://www.scrooble.net/'/* || 'https://www.scrooble.net/' ||/* 'localhost:3333' *///);
 /*
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
