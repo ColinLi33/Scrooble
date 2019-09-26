@@ -25,7 +25,7 @@ socket.on('highscore', function(coolerScore) {
 });
 socket.on('wordCount', function(countOfWords) {
     globalWordCount = countOfWords;
-    document.getElementById("wordCountGlobal").innerHTML = "Words: " + globalWordCount;
+    document.getElementById("wordCountGlobal").innerHTML = "Total Words: " + globalWordCount;
 });
 document.getElementById("scoreBoard").innerHTML = "Score: 0";
 pickLetters();
@@ -244,8 +244,8 @@ function submitAnswer() {
         //This turns the scoreBox green
         boxColor(36, 255, 94);
         checkHighScore();
-        globalWordCount++;
-        document.getElementById("wordCountGlobal").innerHTML = "Words: " + globalWordCount;
+        globalWordCount += .5;
+        document.getElementById("wordCountGlobal").innerHTML = "Total Words: " + globalWordCount;
         socket.emit('updateWordCount', globalWordCount);
 
     } else {
