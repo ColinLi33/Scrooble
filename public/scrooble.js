@@ -244,7 +244,7 @@ function submitAnswer() {
         //This turns the scoreBox green
         boxColor(36, 255, 94);
         checkHighScore();
-        globalWordCount += .5;
+        globalWordCount += 1;
         document.getElementById("wordCountGlobal").innerHTML = "Total Words: " + globalWordCount;
         socket.emit('updateWordCount', globalWordCount);
 
