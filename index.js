@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
   res.render(__dirname + './public/highScore.txt');
   res.render(__dirname + './public/wordCount.txt');
 })
-
+/*
 function updateHighScore(score){
   fs.writeFile("./public/highScore.txt", score, (err) => {
     if (err) console.log(err);
@@ -46,7 +46,7 @@ fs.readFile('./public/wordCount.txt', "utf-8", function(err, wordCount){
 
 
 
-//let io = socket('localhost:3333');
+
 io.on('connection', function(socket){
   console.log(`Connected to ${socket.id}`);
   io.sockets.emit('highscore', highScore);
@@ -61,7 +61,7 @@ io.on('connection', function(socket){
     globalWordCount = wordCount;
     io.sockets.emit('wordCount', globalWordCount);
   });
-});
+}); */
 
 http.listen(process.env.PORT, function(){
   console.log('listening on 3333');

@@ -16,17 +16,18 @@ var scoreBoxG = 0;
 var scoreBoxB = 0;
 var highScore;
 var globalWordCount;
-
+/*
 let socket = io.connect('http://www.scrooble.net/'/* || 'https://www.scrooble.net/' ||/* 'localhost:3333' */);
+/*
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
     document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
 });
 socket.on('wordCount', function(countOfWords) {
     globalWordCount = countOfWords;
-    document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
+    document.getElementById("wordCountGlobal").innerHTML = "Words Submitted: " + globalWordCount;
 });
-
+*/
 document.getElementById("scoreBoard").innerHTML = "Score: 0";
 pickLetters();
 
@@ -242,10 +243,11 @@ function submitAnswer() {
         amountOfWords--;
         document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
         //This turns the scoreBox green
-        boxColor(36, 255, 94);
+        boxColor(36, 255, 94);/*
         checkHighScore();
         globalWordCount++;
-        socket.emit('updateWordCount', globalWordCount);
+        document.getElementById("wordCountGlobal").innerHTML = "Words Submitted: " + globalWordCount;
+        socket.emit('updateWordCount', globalWordCount);*/
 
     } else {
         //Wrong Answer
