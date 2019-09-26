@@ -6,6 +6,7 @@ const http = require('http').createServer(app);
 //const io = require('socket.io')(http);
 var highScore;
 var globalWordCount;
+//    "socket.io": "^2.2.0"
 
 app.use(express.static('public'));
 
@@ -16,7 +17,7 @@ app.get('/', function (req, res) {
   res.render(__dirname + './public/dictionary.txt');
   res.render(__dirname + './public/highScore.txt');
   res.render(__dirname + './public/wordCount.txt');
-})
+});
 /*
 function updateHighScore(score){
   fs.writeFile("./public/highScore.txt", score, (err) => {
