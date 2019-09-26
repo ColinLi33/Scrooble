@@ -1,5 +1,5 @@
 {
-  "name": "scrabblesort",
+  "name": "Scrooble",
   "version": "1.0.0",
   "description": "Guess highest point word from a list of 8 letters",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Colin Li",
-  "license": "ISC",
+  "license": "RECEX SHARED SOURCE LICENSE",
   "dependencies": {
     "express": "^4.17.1",
     "heroku": "^7.29.0",
