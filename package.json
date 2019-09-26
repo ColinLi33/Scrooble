@@ -11,6 +11,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "heroku": "^7.29.0",
-    "requirejs": "^2.3.6",
+    "requirejs": "^2.3.6"
   }
 }
