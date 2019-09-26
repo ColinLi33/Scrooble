@@ -3,10 +3,9 @@ var fs = require('fs');
 var readLine = require('readline');
 const app = require('express')();
 const http = require('http').createServer(app);
-//const io = require('socket.io')(http);
+const io = require('socket.io')(http);
 var highScore;
 var globalWordCount;
-//    "socket.io": "^2.2.0"
 
 app.use(express.static('public'));
 
