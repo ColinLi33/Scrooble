@@ -7,7 +7,6 @@ var score = 0;
 var letterString = "";
 var answerCombos = [];
 var answerSet;
-var globalWordCount;
 var amountOfWords;
 var validWordList = [];
 var validWordSet;
