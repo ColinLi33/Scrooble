@@ -243,7 +243,7 @@ function submitAnswer() {
         //This turns the scoreBox green
         boxColor(36, 255, 94);
         checkHighScore();
-        globalWordCount += 1;
+        globalWordCount++;
         console.log('hi');
         socket.emit('updateWordCount', globalWordCount);
 
