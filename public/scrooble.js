@@ -17,16 +17,16 @@ var highScore;
 var globalWordCount;
 
 //let socket = io.connect(/*'http://www.scrooble.net/' ||* 'https://www.scrooble.net/' ||/* 'localhost:3333' *///);
-let socket = io.connect('https://scrooble.herokuapp.com/');
+//let socket = io.connect('https://scrooble.herokuapp.com/');
 //let socket = io.connect('localhost:3333');
-socket.on('highscore', function(coolerScore) {
+/*socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
     document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
 });
 socket.on('wordCount', function(countOfWords) {
     globalWordCount = countOfWords;
     document.getElementById("wordCountGlobal").innerHTML = "Total Words: " + globalWordCount;
-});
+}); */
 document.getElementById("scoreBoard").innerHTML = "Score: 0";
 pickLetters();
 
@@ -245,7 +245,7 @@ function submitAnswer() {
         checkHighScore();
         globalWordCount++;
         console.log('hi');
-        socket.emit('updateWordCount', globalWordCount);
+      //  socket.emit('updateWordCount', globalWordCount);
 
     } else {
         //Wrong Answer
