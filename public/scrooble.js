@@ -252,7 +252,7 @@ function submitAnswer() {
         checkHighScore();
         globalWordCount++;
         console.log('hi');
-        socket.emit('updateWordCount', globalWordCount);
+      //  socket.emit('updateWordCount', globalWordCount);
 
     } else {
         //Wrong Answer
