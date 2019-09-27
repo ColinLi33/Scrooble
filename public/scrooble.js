@@ -10,22 +10,29 @@ var answerSet;
 var amountOfWords;
 var validWordList = [];
 var validWordSet;
+
 var scoreBoxR = 0;
 var scoreBoxG = 0;
 var scoreBoxB = 0;
+
+var highScoreR = 0;
+var highScoreG = 0;
+var highScoreB = 0;
 var highScore;
+
 var globalWordCount;
 
 //let socket = io.connect(/*'http://www.scrooble.net/' ||* 'https://www.scrooble.net/' ||/* 'localhost:3333' *///);
-let socket = io.connect('https://scrooble.herokuapp.com/');
-//let socket = io.connect('localhost:3333');
+//let socket = io.connect('https://scrooble.herokuapp.com/');
+let socket = io.connect('localhost:3333');
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
     document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
+    console.log("u work?")
 });
 socket.on('wordCount', function(countOfWords) {
     globalWordCount = countOfWords;
-    document.getElementById("wordCountGlobal").innerHTML = "Total Words: " + globalWordCount;
+    document.getElementById("wordCountGlobal").innerHTML = "A total of " + globalWordCount + " words have been played!";
 });
 document.getElementById("scoreBoard").innerHTML = "Score: 0";
 pickLetters();
@@ -359,8 +366,9 @@ function boxColor(r, g, b) {
             checkReachColor(scoreBoxR, scoreBoxG, scoreBoxB, 0, 0, 0)
         }, 3 * (i + 1));
     }
-
 }
+
+
 
 function checkReachColor(r, g, b, ir, ig, ib) {
     if (r > ir && r >= 0)
@@ -381,10 +389,45 @@ function checkReachColor(r, g, b, ir, ig, ib) {
     scoreBoard.style.borderColor = 'rgb(' + scoreBoxR + ', ' + scoreBoxG + ', ' + scoreBoxB + ')';
 }
 
+function highScoreColor(r, g, b) {
+    var highScoreBoard = document.getElementById('highScoreBoard');
+    highScoreR = r;
+    highScoreG = g;
+    highScoreB = b;
+    //Have to concatinate bc can't have var names as part of string
+    highScoreBoard.style.color = 'rgb(' + highScoreR + ', ' + highScoreG + ', ' + highScoreB + ')';
+    //This runs the setTimeout 256 times (enough for all values of r g or b to become 0)
+    for (let i = 0; i < 256; i++) {
+        setTimeout(function() {
+            checkReachColorHS(highScoreR, highScoreG, highScoreB, 0, 0, 0)
+        }, 3 * (i + 1));
+    }
+}
+
+function checkReachColorHS(r, g, b, ir, ig, ib) {
+    if (r > ir && r >= 0)
+        highScoreR = r - 1;
+    else if (r < ir && r <= 255)
+        highScoreR = r + 1;
+
+    if (g > ig && g >= 0)
+        highScoreG = g - 1;
+    else if (g < ig && g <= 255)
+        highScoreG = g + 1;
+
+    if (b > ib && b >= 0)
+        highScoreB = b - 1;
+    else if (b < ib && b <= 255)
+        highScoreB = b + 1;
+    //changes the color to whatever scoreBoxVariable is
+    highScoreBoard.style.color = 'rgb(' + highScoreR + ', ' + highScoreG + ', ' + highScoreB + ')';
+}
+
 function checkHighScore(){
   if(score > highScore){
     highScore = score;
     document.getElementById("highScoreBoard").innerHTML = "highScore: " + highScore;
+    highScoreColor(36, 255, 94);
     socket.emit('updateHighScore', highScore);
   }
 }

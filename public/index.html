@@ -36,8 +36,11 @@
                <b>Scrooble</b>
             </div>
             <div class="headerDesc">
-               <p>Create words with the given letters! (Highscore and Total Words work in progress)</p>
+               <p>Create words with the given letters!<p>
             </div>
+
+          <b>  <div class="highScore" id = "highScoreBoard"></div> </b>
+
          </div>
       </div>
       <div class="game">
@@ -125,20 +128,20 @@
             </b>
          </div>
          <div class="remainingWords" id = "remainingWords"></div>
-         <div class="scoreBox" id = "highScoreBoard"></div>
-         <div class="scoreBox" id = "wordCountGlobal"></div>
-      <!--   <script src="http://localhost:3333/socket.io/socket.io.js"></script> -->
-     <script src="https://scrooble.herokuapp.com/socket.io/socket.io.js"></script> 
+
+
+
+       <script src="http://localhost:3333/socket.io/socket.io.js"></script>
+     <!-- <script src="https://scrooble.herokuapp.com/socket.io/socket.io.js"></script> -->
     <!--     <script src="http://www.scrooble.net/socket.io/socket.io.js"></script> -->
          <script src="scrooble.js"></script>
          <script src="dictionary.txt" id="dictionary" type="text"></script>
-
       </div>
 
       <div class="development">
          <p id ="link"><a href="https://github.com/ColinLi33/Scrooble">View development of Scrooble</a></p>
       </div>
-
+      <div class="globalCount" id = "wordCountGlobal"></div>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <script>
          (adsbygoogle = window.adsbygoogle || []).push({

@@ -131,3 +131,24 @@ display: block;
   right: 0;
   font-family: Courier;
 }
+
+.globalCount {
+  position: absolute;
+  bottom: 20px;
+  text-align: right;
+  vertical-align: bottom;
+  margin: auto;
+  left: 0;
+  right: 10px;
+  font-family: Courier;
+}
+
+.highScore {
+  position: absolute;
+  bottom: 20px;
+  text-align: right;
+  margin: auto;
+    right: 7vh;
+    font-family: Courier;
+      font-size: 20px;
+}
