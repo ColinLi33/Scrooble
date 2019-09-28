@@ -57,7 +57,7 @@ dbo.collection("scrooble").find({}).toArray(function(err, result) {
 });*/
 //update highscore in database
 function updateHighScore(score){
-  MongoClient.connect(url, function(err, db) {
+  client.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("scroobleDB");
     var myquery = { name: 'scroobleHS' };
@@ -72,7 +72,7 @@ function updateHighScore(score){
 }
 //update wordcount in database
 function updateWordCount(wordCount){
-  MongoClient.connect(url, function(err, db) {
+  client.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("scroobleDB");
     var myquery = { name: 'scroobleWC' };
