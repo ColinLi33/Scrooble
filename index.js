@@ -7,76 +7,71 @@ const io = require('socket.io')(http);
 const mysql = require('mysql');
 var highScore;
 var globalWordCount;
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
 
 app.use(express.static('public'));
-/*
 
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '8sowmvsU',
-  database: 'db'
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("scroobleDB");
+dbo.collection("scrooble").find({}).toArray(function(err, result) {
+    if (err) throw err;
+    highScore = result[0].highScore;
+    globalWordCount = result[1].globalWordCount;
+    db.close();
+  });
 });
+function updateHighScore(score){
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("scroobleDB");
+    var myquery = { name: 'scroobleHS' };
+    var newvalues = { $set: {highScore: score} };
+    console.log(myquery);
+    dbo.collection("scrooble").updateOne(myquery, newvalues, function(err, res) {
+      if (err) throw err;
+      console.log("Highscore Updated");
+      db.close();
+    });
+  });
+}
 
-//connect to db
-db.connect((err) => {
-  if(err){
-    throw err;
-  }
-  console.log('MySQL connected...');
-})*/
-
-
+function updateWordCount(wordCount){
+  MongoClient.connect(url, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("scroobleDB");
+    var myquery = { name: 'scroobleWC' };
+    var newvalues = { $set: {globalWordCount: wordCount} };
+    dbo.collection("scrooble").updateOne(myquery, newvalues, function(err, res) {
+      if (err) throw err;
+      console.log("Global Word Count Updated");
+      db.close();
+    });
+  });
+}
 
 app.get('/', function (req, res) {
   res.render(__dirname + './public/index.html');
   res.render(__dirname + './public/scrooble.js');
   res.render(__dirname + './public/dictionary.txt');
-  res.render(__dirname + './public/highScore.txt');
-  res.render(__dirname + './public/wordCount.txt');
 });
-
-function updateHighScore(score){
-  fs.writeFile("./public/highScore.txt", score, (err) => {
-    if (err) console.log(err);
-    console.log("Successfully Written HighScore to File.");
-  });
-}
-
-function updateWordCount(wordCount){
-  fs.writeFile("./public/wordCount.txt", wordCount, (err) => {
-    if (err) console.log(err);
-    console.log("Successfully Written WordCount to File.");
-  });
-}
-
-fs.readFile('./public/highscore.txt', "utf-8", function(err, score){
-  if(err) { console.log(err) }
-  highScore = score;
-  console.log(highScore);
-});
-
-fs.readFile('./public/wordCount.txt', "utf-8", function(err, wordCount){
-  if(err) { console.log(err) }
-  globalWordCount = wordCount;
-});
-
 
 io.on('connection', function(socket){
   console.log(`Connected to ${socket.id}`);
   io.sockets.emit('highscore', highScore);
   io.sockets.emit('wordCount', globalWordCount);
   socket.on('updateHighScore', function(score){
-    updateHighScore(score);
     highScore = score;
+    updateHighScore(score);
     io.sockets.emit('highscore', highScore);
   });
   socket.on('updateWordCount', function(wordCount){
-    updateWordCount(wordCount);
     globalWordCount = wordCount;
+    updateWordCount(wordCount);
     io.sockets.emit('wordCount', globalWordCount);
   });
-}); 
+});
 
 http.listen(process.env.PORT || 3333, function(){
   console.log('listening on 3333');
