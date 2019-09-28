@@ -7,14 +7,12 @@ const io = require('socket.io')(http);
 const mysql = require('mysql');
 var highScore;
 var globalWordCount;
-//var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-var mongoose = require('mongoose');
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb+srv://scroobleofficial@gmail.com:8sowmvsU@scroobledb-06tsw.mongodb.net/test?retryWrites=true&w=majority"
 
 app.use(express.static('public'));
-mongoose.connect(process.env.MONGODB_URI || url);
 
-mongoose.connect(url, function(err, db) {
+MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("scroobleDB");
   var myobj = [
@@ -34,7 +32,7 @@ dbo.collection("scrooble").find({}).toArray(function(err, result) {
   });
 });
 function updateHighScore(score){
-  mongoose.connect(url, function(err, db) {
+  MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("scroobleDB");
     var myquery = { name: 'scroobleHS' };
@@ -49,7 +47,7 @@ function updateHighScore(score){
 }
 
 function updateWordCount(wordCount){
-  mongoose.connect(url, function(err, db) {
+  MongoClient.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("scroobleDB");
     var myquery = { name: 'scroobleWC' };
