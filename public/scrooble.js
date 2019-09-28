@@ -23,8 +23,8 @@ var highScore;
 var globalWordCount;
 
 //let socket = io.connect(/*'http://www.scrooble.net/' ||* 'https://www.scrooble.net/' ||/* 'localhost:3333' *///);
-let socket = io.connect('https://scrooble.herokuapp.com/');
-//let socket = io.connect('localhost:3333');
+//let socket = io.connect('https://scrooble.herokuapp.com/');
+let socket = io.connect('localhost:3333');
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
     document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
@@ -36,7 +36,13 @@ socket.on('wordCount', function(countOfWords) {
     globalWordCount = countOfWords;
     document.getElementById("wordCountGlobal").innerHTML = "A total of " + globalWordCount + " words have been played!";
 });
+/*
+socket.on('dictionary', function(dict) {
+  dictSet = dict;
+  console.log(dictSet);
+}); */
 document.getElementById("scoreBoard").innerHTML = "Score: 0";
+getDictionary('dictionary.txt');
 pickLetters();
 
 //main function that does the stuff
@@ -285,7 +291,6 @@ function resetGame() {
 }
 
 function checkWords(words) {
-    getDictionary('dictionary.txt'); // create array of dictionary words
     getCombinations(words); // create array of letter combinations
     amountOfWords = 0;
     for (let i = 0; i < combinationArray.length; i++) {
@@ -304,6 +309,7 @@ function checkWords(words) {
 
 
 //this puts all the words in the dictionary into an array named list
+
 function getDictionary(filePath) {
     var result = [];
     var xmlhttp = new XMLHttpRequest();
