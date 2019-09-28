@@ -12,7 +12,7 @@ var globalWordCount;
 
 app.use(express.static('public'));
 
-const client = new MongoClient(uri, { useNewUrlParser: true });
+const client = new MongoClient(url, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("scroobleDB").collection("scrooble");
   // perform actions on the collection object
