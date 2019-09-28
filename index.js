@@ -6,7 +6,7 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const mysql = require('mysql');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://scroobleofficial%40gmail.com:8sowmvsU@scroobledb-06tsw.mongodb.net/test?retryWrites=true&w=majority"
+var url = 'mongodb+srv://scrooble:8sowmvsU@scroobledb-06tsw.mongodb.net/test?retryWrites=true&w=majority';
 var highScore;
 var globalWordCount;
 
@@ -33,7 +33,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
       db.close();
     });
   });
-});
+
 
 /*
   const collection = client.db("scroobleDB").collection("scrooble");
@@ -55,8 +55,8 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
   });*/
 
 //connect to database
-
-MongoClient.connect(url, function(err, db) {
+/*
+MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
   if (err) throw err;
   var dbo = db.db("scroobleDB");
   var myobj = [
@@ -75,10 +75,10 @@ dbo.collection("scrooble").find({}).toArray(function(err, result) {
     globalWordCount = result[1].globalWordCount;
     db.close();
   });
-});
+}); */
 //update highscore in database
 function updateHighScore(score){
-  client.connect(url, function(err, db) {
+  MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
     var dbo = db.db("scroobleDB");
     var myquery = { name: 'scroobleHS' };
@@ -93,7 +93,7 @@ function updateHighScore(score){
 }
 //update wordcount in database
 function updateWordCount(wordCount){
-  client.connect(url, function(err, db) {
+  MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
     var dbo = db.db("scroobleDB");
     var myquery = { name: 'scroobleWC' };
