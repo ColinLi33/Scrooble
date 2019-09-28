@@ -26,14 +26,3 @@ Play Scrooble Now!: [[scrooble.net]](http://scrooble.net "scrooble.net") [[scroo
 
 ### Out of Reach Goals
 - Multiplayer (How are we going to do that lol)
-
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="Description" CONTENT="Author: A.N. Author, Illustrator: P. Picture, Category: Books, Price:  £9.24, Length: 784 pages">
-    <meta name="google-site-verification" content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34="/>
-    <title>Example Books - high-quality used books for children</title>
-    <meta name="robots" content="noindex,nofollow">
-    https://support.google.com/webmasters/answer/79812?hl=en
