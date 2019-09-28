@@ -5,13 +5,36 @@ const app = require('express')();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const mysql = require('mysql');
-var highScore;
-var globalWordCount;
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb+srv://scroobleofficial@gmail.com:8sowmvsU@scroobledb-06tsw.mongodb.net/test?retryWrites=true&w=majority"
+var highScore;
+var globalWordCount;
 
 app.use(express.static('public'));
 
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("scroobleDB").collection("scrooble");
+  // perform actions on the collection object
+  var myobj = [
+    { name: 'scroobleHS', highScore: '0'},
+    { name: 'scroobleWC', globalWordCount: '0'},
+  ];
+  dbo.collection("scrooble").insertMany(myobj, function(err, res) {
+  if (err) throw err;
+  console.log("Number of documents inserted: " + res.insertedCount);
+  db.close();
+  });
+  dbo.collection("scrooble").find({}).toArray(function(err, result) {
+    if (err) throw err;
+    highScore = result[0].highScore;
+    globalWordCount = result[1].globalWordCount;
+    db.close();
+  });
+});
+
+//connect to database
+/*
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("scroobleDB");
@@ -24,13 +47,15 @@ dbo.collection("scrooble").insertMany(myobj, function(err, res) {
   console.log("Number of documents inserted: " + res.insertedCount);
   db.close();
 });
+//get the highscore and word count from database
 dbo.collection("scrooble").find({}).toArray(function(err, result) {
     if (err) throw err;
     highScore = result[0].highScore;
     globalWordCount = result[1].globalWordCount;
     db.close();
   });
-});
+});*/
+//update highscore in database
 function updateHighScore(score){
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
@@ -45,7 +70,7 @@ function updateHighScore(score){
     });
   });
 }
-
+//update wordcount in database
 function updateWordCount(wordCount){
   MongoClient.connect(url, function(err, db) {
     if (err) throw err;
@@ -66,6 +91,7 @@ app.get('/', function (req, res) {
   res.render(__dirname + './public/dictionary.txt');
 });
 
+//socket stuff to send to scrooble.js
 io.on('connection', function(socket){
   console.log(`Connected to ${socket.id}`);
   io.sockets.emit('highscore', highScore);
