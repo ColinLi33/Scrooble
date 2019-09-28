@@ -279,14 +279,12 @@ function resetGame() {
     score = 0;
     document.getElementById("scoreBoard").innerHTML = "Score: " + score;
     combinationArray = [];
-    dictSet;
     answer = ['1123123123123123123123'];
     validWordList = [];
     alreadyAnswered = false;
     letterString = "";
     answerCombos = [];
     //answerSet.clear();
-    dictSet.clear();
     pickLetters();
 }
 
