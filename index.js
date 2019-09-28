@@ -6,7 +6,7 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 const mysql = require('mysql');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://scroobleofficial@gmail.com:8sowmvsU@scroobledb-06tsw.mongodb.net/test?retryWrites=true&w=majority"
+var url = "mongodb+srv://scroobleofficial%40gmail.com:8sowmvsU@scroobledb-06tsw.mongodb.net/test?retryWrites=true&w=majority"
 var highScore;
 var globalWordCount;
 
