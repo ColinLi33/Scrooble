@@ -9,7 +9,7 @@ var highScore;
 var globalWordCount;
 
 app.use(express.static('public'));
-
+/*
 
 const db = mysql.createConnection({
   host: 'localhost',
@@ -24,7 +24,7 @@ db.connect((err) => {
     throw err;
   }
   console.log('MySQL connected...');
-})
+})*/
 
 
 
@@ -32,10 +32,10 @@ app.get('/', function (req, res) {
   res.render(__dirname + './public/index.html');
   res.render(__dirname + './public/scrooble.js');
   res.render(__dirname + './public/dictionary.txt');
-  //res.render(__dirname + './public/highScore.txt');
-  //res.render(__dirname + './public/wordCount.txt');
+  res.render(__dirname + './public/highScore.txt');
+  res.render(__dirname + './public/wordCount.txt');
 });
-/*
+
 function updateHighScore(score){
   fs.writeFile("./public/highScore.txt", score, (err) => {
     if (err) console.log(err);
@@ -76,7 +76,7 @@ io.on('connection', function(socket){
     globalWordCount = wordCount;
     io.sockets.emit('wordCount', globalWordCount);
   });
-}); */
+}); 
 
 http.listen(process.env.PORT || 3333, function(){
   console.log('listening on 3333');

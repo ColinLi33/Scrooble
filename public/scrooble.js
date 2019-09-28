@@ -23,12 +23,14 @@ var highScore;
 var globalWordCount;
 
 //let socket = io.connect(/*'http://www.scrooble.net/' ||* 'https://www.scrooble.net/' ||/* 'localhost:3333' *///);
-//let socket = io.connect('https://scrooble.herokuapp.com/');
-let socket = io.connect('localhost:3333');
+let socket = io.connect('https://scrooble.herokuapp.com/');
+//let socket = io.connect('localhost:3333');
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
     document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
-    console.log("u work?")
+    if(highScore == null){
+      document.getElementById("highScoreBoard").innerHTML = "Highscore: 0";
+    }
 });
 socket.on('wordCount', function(countOfWords) {
     globalWordCount = countOfWords;
@@ -252,7 +254,7 @@ function submitAnswer() {
         checkHighScore();
         globalWordCount++;
         console.log('hi');
-      //  socket.emit('updateWordCount', globalWordCount);
+        socket.emit('updateWordCount', globalWordCount);
 
     } else {
         //Wrong Answer
