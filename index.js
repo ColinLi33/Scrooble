@@ -12,8 +12,30 @@ var globalWordCount;
 
 app.use(express.static('public'));
 
-const client = new MongoClient(url, { useNewUrlParser: true });
-client.connect(err => {
+MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
+    if (err) throw err;
+    console.log("Database opened!");
+    var dbo = db.db("scroobleDB");
+    var myobj = [
+    { name: 'scroobleHS', highScore: '0'},
+    { name: 'scroobleWC', globalWordCount: '0'},
+  ];
+  dbo.collection("scrooble").insertMany(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("Number of documents inserted: " + res.insertedCount);
+    db.close();
+  });
+  //get the highscore and word count from database
+  dbo.collection("scrooble").find({}).toArray(function(err, result) {
+      if (err) throw err;
+      highScore = result[0].highScore;
+      globalWordCount = result[1].globalWordCount;
+      db.close();
+    });
+  });
+});
+
+/*
   const collection = client.db("scroobleDB").collection("scrooble");
   // perform actions on the collection object
   var myobj = [
@@ -30,11 +52,10 @@ client.connect(err => {
     highScore = result[0].highScore;
     globalWordCount = result[1].globalWordCount;
     db.close();
-  });
-});
+  });*/
 
 //connect to database
-/*
+
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("scroobleDB");
@@ -54,7 +75,7 @@ dbo.collection("scrooble").find({}).toArray(function(err, result) {
     globalWordCount = result[1].globalWordCount;
     db.close();
   });
-});*/
+});
 //update highscore in database
 function updateHighScore(score){
   client.connect(url, function(err, db) {
