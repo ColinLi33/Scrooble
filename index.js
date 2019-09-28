@@ -7,14 +7,25 @@ const io = require('socket.io')(http);
 const mysql = require('mysql');
 var highScore;
 var globalWordCount;
-var MongoClient = require('mongodb').MongoClient;
+//var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
+var mongoose = require('mongoose');
 
 app.use(express.static('public'));
+mongoose.connect(process.env.MONGODB_URI || url);
 
-MongoClient.connect(url, function(err, db) {
+mongoose.connect(url, function(err, db) {
   if (err) throw err;
   var dbo = db.db("scroobleDB");
+  var myobj = [
+  { name: 'scroobleHS', highScore: '0'},
+  { name: 'scroobleWC', globalWordCount: '0'},
+];
+dbo.collection("scrooble").insertMany(myobj, function(err, res) {
+  if (err) throw err;
+  console.log("Number of documents inserted: " + res.insertedCount);
+  db.close();
+});
 dbo.collection("scrooble").find({}).toArray(function(err, result) {
     if (err) throw err;
     highScore = result[0].highScore;
@@ -23,7 +34,7 @@ dbo.collection("scrooble").find({}).toArray(function(err, result) {
   });
 });
 function updateHighScore(score){
-  MongoClient.connect(url, function(err, db) {
+  mongoose.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("scroobleDB");
     var myquery = { name: 'scroobleHS' };
@@ -38,7 +49,7 @@ function updateHighScore(score){
 }
 
 function updateWordCount(wordCount){
-  MongoClient.connect(url, function(err, db) {
+  mongoose.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("scroobleDB");
     var myquery = { name: 'scroobleWC' };
