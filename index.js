@@ -16,15 +16,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
     if (err) throw err;
     console.log("Database opened!");
     var dbo = db.db("scroobleDB");
-    var myobj = [
-    { name: 'scroobleHS', highScore: '0'},
-    { name: 'scroobleWC', globalWordCount: '0'},
-  ];
-  dbo.collection("scrooble").insertMany(myobj, function(err, res) {
-    if (err) throw err;
-    console.log("Number of documents inserted: " + res.insertedCount);
-    db.close();
-  });
   //get the highscore and word count from database
   dbo.collection("scrooble").find({}).toArray(function(err, result) {
       if (err) throw err;
@@ -33,6 +24,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
       db.close();
     });
   });
+
 
 
 /*
