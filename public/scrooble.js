@@ -23,8 +23,9 @@ var highScore;
 var globalWordCount;
 
 //let socket = io.connect(/*'http://www.scrooble.net/' ||* 'https://www.scrooble.net/' ||/* 'localhost:3333' *///);
-let socket = io.connect('https://scrooble.herokuapp.com/');
+//let socket = io.connect('https://scrooble.herokuapp.com/');
 //let socket = io.connect('localhost:3333');
+let socket = io.connect('http://www.scrooble.net/');
 socket.on('highscore', function(coolerScore) {
     highScore = coolerScore;
     document.getElementById("highScoreBoard").innerHTML = "Highscore: " + highScore;
