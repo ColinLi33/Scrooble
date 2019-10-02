@@ -96,8 +96,6 @@ io.on('connection', function(socket) {
            playerCount++;
            socket.emit('userType', {'type': 'player1'})
        }
-
-
    });
 
   socket.on('disconnect', function(){
