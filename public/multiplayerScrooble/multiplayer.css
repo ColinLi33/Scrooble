@@ -1,0 +1,67 @@
+.headerBox {
+  height: 250px;
+  top: 5px;
+  max-width:1200vw;
+  padding-left: 50px;
+  position: relative;
+   margin: auto;
+   margin-left: 10px;
+   margin-right: 10px;
+   margin-top: 10px;
+  vertical-align: middle;
+  background-color: #FF7D00;
+}
+
+.headerTitle {
+  text-align: center; top;
+  color: white;
+  font-size: 100px;
+  position: relative;
+    font-family: Courier;
+      margin: auto;
+  position: float;
+    font-family: Courier;
+}
+
+.headerDesc {
+  text-align: center; top;
+  color: white;
+  font-size: 30px;
+  position: relative;
+  top: 10px;
+    font-family: Courier;
+      margin: auto;
+}
+
+.game {
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  top: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.tiles {
+  display: inline-block;
+  text-align: center;
+}
+
+.singleTile {
+
+  background-color: #FFE0AE;
+  width: 150px;
+  height: 150px;
+  border: 3px solid black;
+  padding: 10px;
+  margin: 5px;
+  line-height: 150px;
+  float: left;
+
+}
+
+.tileLetter {
+  font-size: 20px;
+  font-family: Courier;
+  vertical-align: middle;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lobby</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="multiplayer.css" rel="stylesheet" type="text/css">
+</head>
+<style>
+   html {
+   background-color: #DBDBDB;
+   }
+</style>
+<div class="header">
+   <div class="headerBox">
+      <div class="headerTitle">
+         <b>Scrooble</b>
+      </div>
+      <div class="headerDesc">
+         <p>Create words with the given letters!<p>
+      </div>
+
+    <b>  <div class="highScore" id = "highScoreBoard"></div> </b>
+
+   </div>
+</div>
+
+<body>
+  <div class="game">
+    <div class="tiles">
+    <div class="singleTile">
+      <b>
+        <div class="tileLetter" id = "letterPlayer1">Waiting...</div>
+      </b>
+    </div>
+    <div class="singleTile">
+      <b>
+        <div class="tileLetter" id = "letterPlayer2">Waiting...</div>
+      </b>
+    </div>
+  </div>
+</div>
+
+
+    <script src="lobby.js"></script>
+
+</body>
+</html>

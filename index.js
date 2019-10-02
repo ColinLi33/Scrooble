@@ -73,29 +73,59 @@ function updateWordCount(wordCount) {
 }
 
 app.get('/', function(req, res) {
-	res.render(__dirname + './public/index.html');
-	res.render(__dirname + './public/scrooble.js');
-	res.render(__dirname + './public/dictionary.txt');
+	res.render(__dirname + './public/scrooble/index.html');
+  res.render(__dirname + './public/multiplayerScrooble/lobby.html');
+	res.render(__dirname + './public/scrooble/dictionary.txt');
 });
 
-
-//socket stuff to send to scrooble.js
+var playerCount = 0;
+var players = [];
+//socket stuff
 io.on('connection', function(socket) {
-  console.log(`Connected to ${socket.id}`);
-	io.sockets.emit('highscore', highScore);
-	io.sockets.emit('wordCount', globalWordCount);
-	socket.on('updateHighScore', function(score) {
+  console.log(`A user connected;`);
+  if(players.length < 2){
+    players.push(socket.id);
+    io.sockets.emit('player', {playerIndex: players.length-1});
+  }
+  socket.on('ready', function(){
+       if(playerCount == 1){
+           socket.emit("userType", {'type': "player2"});
+           io.sockets.emit('startGame');
+           console.log('starting game');
+       }else{
+           playerCount++;
+           socket.emit('userType', {'type': 'player1'})
+       }
+
+
+   });
+
+  socket.on('disconnect', function(){
+    console.log('A user disconnected');
+  });
+
+	io.sockets.emit('highscore', highScore); //send highscore from database to scrooble.js
+	io.sockets.emit('wordCount', globalWordCount); //send global word count from database to scrooble.js
+
+  //receive new highscore from scrooble.js
+  socket.on('updateHighScore', function(score) {
 		highScore = score;
 		updateHighScore(score);
 		io.sockets.emit('highscore', highScore);
 	});
+
+  //receive new word count from scrooble.js
 	socket.on('updateWordCount', function(wordCount) {
 		globalWordCount = wordCount;
 		updateWordCount(wordCount);
 		io.sockets.emit('wordCount', globalWordCount);
 	});
+
+  //multiplayer stuff
+
+
 });
 
 http.listen(process.env.PORT || 3333, function() {
-	console.log('listening on 3333');
+	console.log('listening on ' + process.env.PORT || '3333');
 });
