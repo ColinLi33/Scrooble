@@ -5,14 +5,21 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge;">
       <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--  <link rel="alternate" href="https://www.heroku.com/" hreflang="en" />
-      <link rel="alternate" href="https://jp.heroku.com/" hreflang="ja" /> -->
+      <link rel="alternate" href="https://www.heroku.com/" hreflang="en" />
+      <link rel="alternate" href="https://jp.heroku.com/" hreflang="ja" />
       <title>Scrooble | Create words with the given letters!</title>
       <meta name="description" content="A game of anagrams with the rules of Scrabble.">
 
       <link href="style.css" rel="stylesheet" type="text/css">
       <script src="highScore.txt" id="highScore" type="text"></script>
       <script src="wordCount.txt" id="wordCount" type="text"></script>
+      
+      <script>
+         var host = "www.scrooble.net";
+         if ((host == window.location.host) && (window.location.protocol != "https:")){
+            window.location.protocol = "https";
+         }
+      </script>
 
       <!-- Global site tag (gtag.js) - Google Analytics -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-148078283-1"></script>
