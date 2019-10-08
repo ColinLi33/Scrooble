@@ -1,5 +1,5 @@
 var scroobleBag = "AAAAAAAAABBCCDDDDEEEEEEEEEEEEFFGGGHHIIIIIIIIIJKLLLLMMNNNNNNOOOOOOOOPPQRRRRRRSSSSTTTTTTUUUUVVWWXYYZ".split("");
-var tileNumber = 8;
+var tileNumber = 6;
 var combinationArray = [];
 var dictSet;
 var answer = ['1123123123123123123123'];
@@ -301,7 +301,7 @@ function checkWords(words) {
     validWordSet = new Set(validWordList);
     amountOfWords = validWordSet.size;
     document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
-    if (amountOfWords >= tileNumber * 12)
+    if (amountOfWords >= tileNumber * 10)
         return true;
     else
         return false;
