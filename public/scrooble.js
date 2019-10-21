@@ -252,8 +252,11 @@ function submitAnswer() {
             }
         }
         //Finds if long word for extra points
-        if (answeredString.length >= 7) {
+        if (answeredString.length == 7) {
             score += 50;
+        }
+        if(answeredString.length == 150){
+            score += 150;   
         }
         amountOfWords--;
         document.getElementById("remainingWords").innerHTML = "Remaining Words: " + amountOfWords;
