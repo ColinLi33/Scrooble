@@ -255,7 +255,7 @@ function submitAnswer() {
         if (answeredString.length == 7) {
             score += 50;
         }
-        if(answeredString.length == 150){
+        if(answeredString.length == 8){
             score += 150;   
         }
         amountOfWords--;
