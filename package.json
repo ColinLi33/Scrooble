@@ -9,7 +9,7 @@
   "author": "Colin Li",
   "license": "RECEX SHARED SOURCE LICENSE",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "heroku": "^7.29.0",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.1",
